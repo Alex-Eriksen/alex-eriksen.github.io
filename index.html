@@ -1,9 +1,75 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>MEGA TEST</title>
+	<head lang="en">
+		<title>ELDEN RING - Gear Calculator</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="A site for comparing gear and to build a gear set in ELDEN RING" />
+		<meta name="author" content="Alexander Vestergaard Eriksen" />
+		<link href="/test.css" rel="stylesheet" />
+		<script src="/JS/calculate.js"></script>
+		<link rel="icon" href="MEDIA/favicon.ico" />
 	</head>
 	<body>
-		<h1>TEST</h1>
+		
+		<div class="container">
+			<div class="input autocomplete">
+				<h4>New Input</h4>
+				<label for="iHead">Head</label>
+				<input id="iHead" name="iHead" />
+	
+				<label for="iChest">Chest</label>
+				<input id="iChest" name="iChest" />
+	
+				<label for="iArms">Arms</label>
+				<input id="iArms" name="iArms" />
+	
+				<label for="iLegs">Legs</label>
+				<input id="iLegs" name="iLegs" />
+			</div>
+			<div class="input autocomplete">
+				<h4>Old Input</h4>
+				<label for="_iHead">Head</label>
+				<input id="_iHead" name="_iHead"/>
+	
+				<label for="_iChest">Chest</label>
+				<input id="_iChest" name="_iChest"/>
+	
+				<label for="_iArms">Arms</label>
+				<input id="_iArms" name="_iArms"/>
+	
+				<label for="_iLegs">Legs</label>
+				<input id="_iLegs" name="_iLegs"/>
+			</div>
+			<div class="input">
+
+			</div>
+			<button onclick="start()">Calculate</button>
+			<div class="output">
+				<h4>Output</h4>
+
+				<label for="oHead">Head</label>
+				<input name="oHead" readonly/>
+	
+				<label for="oChest">Chest</label>
+				<input name="oChest" readonly/>
+	
+				<label for="oArms">Arms</label>
+				<input name="oArms" readonly/>
+	
+				<label for="oLegs">Legs</label>
+				<input name="oLegs" readonly/>
+			</div>
+		</div>
+		<script>
+			autocomplete(document.getElementById("iHead"));
+			autocomplete(document.getElementById("iChest"));
+			autocomplete(document.getElementById("iArms"));
+			autocomplete(document.getElementById("iLegs"));
+			autocomplete(document.getElementById("_iHead"));
+			autocomplete(document.getElementById("_iChest"));
+			autocomplete(document.getElementById("_iArms"));
+			autocomplete(document.getElementById("_iLegs"));
+		</script>
 	</body>
 </html>

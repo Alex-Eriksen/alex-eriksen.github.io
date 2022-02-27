@@ -1,0 +1,27 @@
+[
+	{
+		"name": "Kaiden Helm",
+		"set": "kaiden",
+		"type": "head",
+		"weight": 4.0,
+		"damageNegation":
+		{
+			"Physical": 4.4,
+			"Strike": 3.4,
+			"Slash": 4.4,
+			"Pierce": 4.4,
+			"Magic": 3.1,
+			"Fire": 3.4,
+			"Lighting": 2.8,
+			"Holy": 3.1
+		},
+		"resistance":
+		{
+			"immunity": 12,
+			"robustness": 22,
+			"focus": 9,
+			"vitality": 9,
+			"poise": 5
+		}
+	}
+]

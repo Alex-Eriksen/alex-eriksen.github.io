@@ -1,0 +1,77 @@
+[
+	{
+		"name": "Bandit Manchettes",
+		"set": "bandit",
+		"type": "arm",
+		"weight": 1.7,
+		"damageNegation":
+		{
+			"Physical": 1.5,
+			"Strike": 1.6,
+			"Slash": 1.7,
+			"Pierce": 1.7,
+			"Magic": 1.9,
+			"Fire": 1.9,
+			"Lighting": 2.1,
+			"Holy": 1.7
+		},
+		"resistance":
+		{
+			"immunity": 15,
+			"robustness": 8,
+			"focus": 17,
+			"vitality": 17,
+			"poise": 0
+		}
+	},
+	{
+		"name": "Kaiden Guantlets",
+		"set": "kaiden",
+		"type": "arm",
+		"weight": 2.9,
+		"damageNegation":
+		{
+			"Physical": 2.9,
+			"Strike": 2.1,
+			"Slash": 2.9,
+			"Pierce": 2.9,
+			"Magic": 1.9,
+			"Fire": 2.1,
+			"Lighting": 1.7,
+			"Holy": 1.9
+		},
+		"resistance":
+		{
+			"immunity": 8,
+			"robustness": 15,
+			"focus": 6,
+			"vitality": 6,
+			"poise": 3
+		}
+	},
+	{
+		"name": "Raya Lucarian Gauntlets",
+		"set": "raya-lucarian",
+		"type": "arm",
+		"weight": 3.5,
+		"damageNegation":
+		{
+			"Physical": 3.2,
+			"Strike": 2.7,
+			"Slash": 3.3,
+			"Pierce": 3.2,
+			"Magic": 2.7,
+			"Fire": 2.7,
+			"Lighting": 1.7,
+			"Holy": 2.1
+		},
+		"resistance":
+		{
+			"immunity": 11,
+			"robustness": 18,
+			"focus": 8,
+			"vitality": 8,
+			"poise": 4
+		}
+	}
+]
