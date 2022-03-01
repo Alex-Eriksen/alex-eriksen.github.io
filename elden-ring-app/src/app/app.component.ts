@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'elden-ring-app';
+  public test(): void
+  {
+    console.log("AIDS");
+  }
 }
