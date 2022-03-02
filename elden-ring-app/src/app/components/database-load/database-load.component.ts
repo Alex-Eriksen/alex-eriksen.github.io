@@ -1,37 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { initializeApp } from 'firebase/app';
-import { collection, connectFirestoreEmulator, doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
-import { environment } from 'src/environments/environment';
+import { Component } from '@angular/core';
+import { Firestore, collection } from '@angular/fire/firestore';
+import { getDocs, getFirestore } from 'firebase/firestore';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Equipment } from 'src/app/interfaces/equipment';
+import { connectFirestoreEmulator } from 'firebase/firestore';
 
 @Component({
   selector: 'app-database-load',
   templateUrl: './database-load.component.html',
   styleUrls: ['./database-load.component.css']
 })
-export class DatabaseLoadComponent implements OnInit {
+export class DatabaseLoadComponent
+{
+  constructor(private firestore: Firestore) { }
 
-  constructor() { }
+  public _items: Equipment[] = [];
 
-  ngOnInit(): void
+  public async Load()
   {
-
-  }
-
-  public async testLoad()
-  {
-    const app = initializeApp(environment.firebaseConfig);
-
-    const db = getFirestore(app);
-
-    //connectFirestoreEmulator(db, 'localhost', 4200);
-
-    const equipmentRef = collection(db, "Equipment");
-
-    await setDoc(doc(equipmentRef, "Head"),
+    //connectFirestoreEmulator(this.firestore, 'localhost', 8081);
+    const querySnapshot = await getDocs(collection(this.firestore, "Equipment"));
+    querySnapshot.forEach((doc) =>
     {
-      physical: 4.20
+      console.log(doc.id, " => ", doc.data());
     })
   }
-
-
 }

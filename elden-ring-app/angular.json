@@ -10,7 +10,7 @@
           "strict": true
         }
       },
-      "root": "",
+      "root": "https://alex-eriksen.github.io/",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {

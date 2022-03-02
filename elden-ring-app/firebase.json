@@ -1,15 +1,24 @@
 {
   "hosting": {
-  "public": "./dist/elden-ring-app",
-  "ignore": [
-    "firebase.json",
-    "**/.*",
-    "**/node_modules/**"
-  ],
-  "rewrites": [
-    {
-      "source": "**",
-      "destination": "/index.html"
+    "public": "./dist/elden-ring-app",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "emulators": {
+    "firestore": {
+      "port": 8081
+    },
+    "ui": {
+      "enabled": true
     }
-  ]
-}}
+  }
+}
