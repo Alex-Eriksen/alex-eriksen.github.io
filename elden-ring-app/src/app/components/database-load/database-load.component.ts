@@ -23,7 +23,7 @@ export class DatabaseLoadComponent implements OnInit {
 
     const db = getFirestore(app);
 
-    connectFirestoreEmulator(db, 'localhost', 4200);
+    //connectFirestoreEmulator(db, 'localhost', 4200);
 
     const equipmentRef = collection(db, "Equipment");
 
