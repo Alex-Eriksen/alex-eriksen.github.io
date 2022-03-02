@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  emulator: false,
   firebaseConfig: {
     apiKey: "AIzaSyC7m2XOQQ7r1vFrgAfq7tLHq8ZBANs8ER0",
     authDomain: "elden-ring-gear-project.firebaseapp.com",

@@ -4,10 +4,13 @@
 
 export const environment = {
   production: false,
+  emulator: true,
   firebaseConfig: {
+    host: 'localhost:4200',
+    ssl: false,
     apiKey: "AIzaSyC7m2XOQQ7r1vFrgAfq7tLHq8ZBANs8ER0",
     authDomain: "elden-ring-gear-project.firebaseapp.com",
-    databaseURL: "https://elden-ring-gear-project-default-rtdb.europe-west1.firebasedatabase.app",
+    databaseURL: "localhost:8081?ns=elden-ring-gear-project",
     projectId: "elden-ring-gear-project",
     storageBucket: "elden-ring-gear-project.appspot.com",
     messagingSenderId: "121972688077",
