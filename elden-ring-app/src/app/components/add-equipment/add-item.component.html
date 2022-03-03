@@ -1,58 +1,86 @@
   <div class="row h-100 justify-content-center align-items-center">
     <div class="col-10 col-md-8 col-lg-6">
-      <form class="form-control">
-        <mat-form-field appearance="fill">
-          <mat-label>Category</mat-label>
-          <mat-select [formControl]="equipmentControl" #selection>
-            <mat-option>-- None --</mat-option>
-            <mat-optgroup *ngFor="let category of equipmentGroups" [label]="category.name">
-              <mat-option *ngFor="let subcategory of category.subcategory" [value]="subcategory.name">{{ subcategory.name }}</mat-option>
-            </mat-optgroup>
-          </mat-select>
-        </mat-form-field>
-
-        <div *ngIf="selection.value">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="name" placeholder="Name">
-            <label for="name">Item Name</label>
+      <form class="form-control p-5">
+        <div class="row">
+          <div class="col-10 col-md-8 col-lg-6">
+            <mat-form-field appearance="fill">
+              <mat-label>Category</mat-label>
+              <mat-select [formControl]="equipmentControl" #selection>
+                <mat-option>-- None --</mat-option>
+                <mat-optgroup *ngFor="let category of equipmentGroups" [label]="category.name">
+                  <mat-option *ngFor="let subcategory of category.subcategory" [value]="subcategory.name" (onSelectionChange)="optionSelected($event)">{{ subcategory.name }}</mat-option>
+                </mat-optgroup>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-10 col-md-8 col-lg-6">
+            <div class="form-floating mb-3" *ngIf="selection.value">
+              <input type="text" class="form-control" id="itemName" placeholder="Item Name">
+              <label for="itemName">Item Name</label>
+            </div>
           </div>
         </div>
 
-        <div *ngIf="selection.value == 'Helmet' || selection.value == 'Chest' || selection.value == 'Arms' || selection.value == 'Legs'">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="set" placeholder="Set">
-            <label for="set">Set</label>
-          </div>
+
+        <div *ngIf="selection.value">
           <div class="row">
             <div class="col-10 col-md-8 col-lg-6">
+              <value [name]="'Set'" [isRequired]="false" [type]="'number'"></value>
+            </div>
+            <div class="col-10 col-md-8 col-lg-6">
+              <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="weight" placeholder="Weight">
+                <label for="weight">Weight</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="this.selected == 'Armor'">
+          <div class="row border rounded border-primary p-2">
+            <div class="col-10 col-md-8 col-lg-6">
               <h4>Damage Negation</h4>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="physical" placeholder="Physical">
-                <label for="physical">Physical</label>
+              <div class="row">
+                <div class="col-10 col-md-8 col-lg-6">
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="physical" placeholder="Physical">
+                    <label for="physical">Physical</label>
+                  </div>
+                </div>
+                <div class="col-10 col-md-8 col-lg-6">
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="strike" placeholder="Strike">
+                    <label for="strike">Strike</label>
+                  </div>
+                </div>
               </div>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="strike" placeholder="Strike">
-                <label for="strike">Strike</label>
+              <div class="row">
+                <div class="col-10 col-md-8 col-lg-6">
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="pierce" placeholder="Pierce">
+                    <label for="pierce">Pierce</label>
+                  </div>
+                </div>
+                <div class="col-10 col-md-8 col-lg-6">
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="slash" placeholder="Slash">
+                    <label for="slash">Slash</label>
+                  </div>
+                </div>
               </div>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="pierce" placeholder="Pierce">
-                <label for="pierce">Pierce</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="slash" placeholder="Slash">
-                <label for="slash">Slash</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="lightning" placeholder="Lightning">
-                <label for="lightning">Lightning</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="magic" placeholder="Magic">
-                <label for="magic">Magic</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="fire" placeholder="Fire">
-                <label for="fire">Fire</label>
+              <div class="row">
+                <div class="col-10 col-md-8 col-lg-6">
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="magic" placeholder="Magic">
+                    <label for="magic">Magic</label>
+                  </div>
+                </div>
+                <div class="col-10 col-md-8 col-lg-6">
+                  <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="fire" placeholder="Fire">
+                    <label for="fire">Fire</label>
+                  </div>
+                </div>
               </div>
               <div class="form-floating mb-3">
                 <input type="number" class="form-control" id="holy" placeholder="Holy">
@@ -85,7 +113,95 @@
           </div>
         </div>
 
-        <button class="btn btn-outline-primary" type="submit">Submit</button>
+        <div *ngIf="this.selected == 'Weapon'">
+          <div class="border rounded border-primary p-2 overflow-hidden">
+            <div class="row">
+              <div class="col-10 col-md-8 col-lg-6">
+                <h4>Attack</h4>
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="physical" placeholder="Physical">
+                  <label for="physical">Physical</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="magic" placeholder="Magic">
+                  <label for="magic">Magic</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="fire" placeholder="Fire">
+                  <label for="fire">Fire</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="lightning" placeholder="Lightning">
+                  <label for="lightning">Lightning</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="holy" placeholder="Holy">
+                  <label for="holy">Holy</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="critical" placeholder="Critical">
+                  <label for="critical">Critical</label>
+                </div>
+              </div>
+              <div class="col-10 col-md-8 col-lg-6">
+                <h4>Guard</h4>
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="physical" placeholder="Physical">
+                  <label for="physical">Physical</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="magic" placeholder="Magic">
+                  <label for="magic">Magic</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="fire" placeholder="Fire">
+                  <label for="fire">Fire</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="lightning" placeholder="Lightning">
+                  <label for="lightning">Lightning</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="holy" placeholder="Holy">
+                  <label for="holy">Holy</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="number" class="form-control" id="boost" placeholder="Boost">
+                  <label for="boost">Boost</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-10 col-md-8 col-lg-6">
+                <div class="row">
+                  <div class="col-10 col-md-8 col-lg-6">
+                    <h4>Scaling</h4>
+                  </div>
+                  <div class="col-10 col-md-8 col-lg-6">
+                    <button class="btn btn-outline-secondary m-1" (click)="addScaleField()">+</button>
+                    <button class="btn btn-outline-secondary m-1" (click)="removeScaleField()">-</button>
+                  </div>
+                </div>
+                <scale-field *ngFor="let scaleField of scaleFields"></scale-field>
+              </div>
+              <div class="col-10 col-md-8 col-lg-6">
+                <div class="row">
+                  <div class="col-10 col-md-8 col-lg-6">
+                    <h4>Requires</h4>
+                  </div>
+                  <div class="col-10 col-md-8 col-lg-6">
+                    <button class="btn btn-outline-secondary m-1" (click)="addStatField()">+</button>
+                    <button class="btn btn-outline-secondary m-1" (click)="removeStatField()">-</button>
+                  </div>
+                </div>
+                <stat-field *ngFor="let statField of statFields"></stat-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <button class="btn btn-outline-primary" type="submit">Submit</button>
+        </div>
       </form>
     </div>
   </div>

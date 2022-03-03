@@ -10,16 +10,32 @@ import { DatabaseLoadComponent } from './components/database-load/database-load.
 import { AddItemComponent } from './components/add-equipment/add-item.component';
 import { connectFirestoreEmulator } from 'firebase/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ValueComponent } from './components/value/value.component';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { StatFieldComponent } from './components/stat-field/stat-field.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatRippleModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { ScaleFieldComponent } from './components/scale-field/scale-field.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DatabaseLoadComponent,
-    AddItemComponent
+    AddItemComponent,
+    StatFieldComponent,
+    ValueComponent,
+    ScaleFieldComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +46,16 @@ import { MatSelectModule } from '@angular/material/select';
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatRippleModule,
+    MatSlideToggleModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearence: 'fill' } }

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MatOptionSelectionChange } from '@angular/material/core';
+import { Stat } from '../stat-field/stat-field.component';
 
 interface SubCategory
 {
@@ -17,20 +19,40 @@ interface Category
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.css']
 })
-export class AddItemComponent implements OnInit {
-
+export class AddItemComponent
+{
   constructor() { }
 
-  selected: string | undefined;
+  selected: string = "";
+  statFields: Array<number> = [];
+  scaleFields: Array<number> = [];
 
-  ngOnInit(): void
+  addStatField()
   {
-
+    this.statFields.push(1);
   }
 
-  changeClient(selected: string): void
+  removeStatField()
   {
-    this.selected = selected;
+    this.statFields.pop();
+  }
+
+  addScaleField()
+  {
+    this.scaleFields.push(1);
+  }
+
+  removeScaleField()
+  {
+    this.scaleFields.pop();
+  }
+
+  optionSelected(event: MatOptionSelectionChange): any
+  {
+    if (event.isUserInput)
+    {
+      this.selected = event.source.group.label;
+    }
   }
 
   equipmentControl = new FormControl();

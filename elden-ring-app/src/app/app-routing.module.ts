@@ -4,7 +4,7 @@ import { AddItemComponent } from './components/add-equipment/add-item.component'
 import { DatabaseLoadComponent } from './components/database-load/database-load.component';
 
 const routes: Routes = [
-  {path: "", component: AddItemComponent}
+  { path: "", component: AddItemComponent }
 ];
 
 @NgModule({
