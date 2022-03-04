@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { MatOptionSelectionChange } from '@angular/material/core';
-import { Stat } from '../stat-field/stat-field.component';
 
 interface SubCategory
 {
@@ -27,27 +26,32 @@ export class AddItemComponent
   statFields: Array<number> = [];
   scaleFields: Array<number> = [];
 
-  addStatField()
+  public onSubmit(form: NgForm): void
+  {
+    console.log(form.value);
+  }
+
+  public addStatField(): void
   {
     this.statFields.push(1);
   }
 
-  removeStatField()
+  public removeStatField(): void
   {
     this.statFields.pop();
   }
 
-  addScaleField()
+  public addScaleField(): void
   {
     this.scaleFields.push(1);
   }
 
-  removeScaleField()
+  public removeScaleField(): void
   {
     this.scaleFields.pop();
   }
 
-  optionSelected(event: MatOptionSelectionChange): any
+  public optionSelected(event: MatOptionSelectionChange): any
   {
     if (event.isUserInput)
     {

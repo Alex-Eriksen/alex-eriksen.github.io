@@ -12,22 +12,12 @@ import { connectFirestoreEmulator } from 'firebase/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ValueComponent } from './components/value/value.component';
-
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
 import { StatFieldComponent } from './components/stat-field/stat-field.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatRippleModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { ScaleFieldComponent } from './components/scale-field/scale-field.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { AngularMaterialModuleModule } from './modules/angular-material-module/angular-material-module.module';
+
 
 @NgModule({
   declarations: [
@@ -46,18 +36,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatCardModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatNativeDateModule,
-    MatDatepickerModule,
-    MatRippleModule,
-    MatSlideToggleModule,
-    MatButtonModule,
-    MatIconModule,
-    FlexLayoutModule
+    AngularMaterialModuleModule
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearence: 'fill' } }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore, collection } from '@angular/fire/firestore';
 import { doc, getDocs, setDoc } from 'firebase/firestore';
-import { Equipment } from 'src/app/interfaces/equipment';
+import { ArmorEquipment } from 'src/app/interfaces/equipment';
 import { connectFirestoreEmulator } from 'firebase/firestore';
 
 const kaidenHelm = {
@@ -42,19 +42,19 @@ export class DatabaseLoadComponent implements OnInit
     connectFirestoreEmulator(this.firestore, 'localhost', 8081);
   }
 
-  public _items: Equipment[] = [];
+  // public _items: Equipment[] = [];
 
-  public async Set()
-  {
-    await setDoc(doc(this.firestore, "Equipment", "Kaiden Helm"), kaidenHelm);
-  }
+  // public async Set()
+  // {
+  //   await setDoc(doc(this.firestore, "Equipment", "Kaiden Helm"), kaidenHelm);
+  // }
 
-  public async Load()
-  {
-    const querySnapshot = await getDocs(collection(this.firestore, "Equipment"));
-    querySnapshot.forEach((doc) =>
-    {
-      this._items.push(doc.data() as Equipment);
-    })
-  }
+  // public async Load()
+  // {
+  //   const querySnapshot = await getDocs(collection(this.firestore, "Equipment"));
+  //   querySnapshot.forEach((doc) =>
+  //   {
+  //     this._items.push(doc.data() as Equipment);
+  //   })
+  // }
 }
