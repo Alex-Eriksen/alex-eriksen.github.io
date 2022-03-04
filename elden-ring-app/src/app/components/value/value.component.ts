@@ -12,5 +12,6 @@ export class ValueComponent
   @Input() name!: string;
   @Input() type!: string;
   @Input() isRequired?: boolean;
+  @Input() flex?: number;
 
 }

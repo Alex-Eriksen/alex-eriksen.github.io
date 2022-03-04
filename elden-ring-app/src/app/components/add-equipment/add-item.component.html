@@ -15,22 +15,19 @@
           </div>
           <div class="col-10 col-md-8 col-lg-6">
             <div class="form-floating mb-3" *ngIf="selection.value">
-              <input type="text" class="form-control" id="itemName" placeholder="Item Name">
-              <label for="itemName">Item Name</label>
+              <value [name]="'Item Name'" [isRequired]="true" [type]="'text'"></value>
             </div>
           </div>
         </div>
 
-
         <div *ngIf="selection.value">
           <div class="row">
             <div class="col-10 col-md-8 col-lg-6">
-              <value [name]="'Set'" [isRequired]="false" [type]="'number'"></value>
+              <value [name]="'Set'" [isRequired]="false" [type]="'text'"></value>
             </div>
             <div class="col-10 col-md-8 col-lg-6">
               <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="weight" placeholder="Weight">
-                <label for="weight">Weight</label>
+                <value [name]="'Weight'" [isRequired]="true" [type]="'number'"></value>
               </div>
             </div>
           </div>
@@ -42,133 +39,61 @@
               <h4>Damage Negation</h4>
               <div class="row">
                 <div class="col-10 col-md-8 col-lg-6">
-                  <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="physical" placeholder="Physical">
-                    <label for="physical">Physical</label>
-                  </div>
+                  <value [name]="'Physical'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
                 </div>
                 <div class="col-10 col-md-8 col-lg-6">
-                  <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="strike" placeholder="Strike">
-                    <label for="strike">Strike</label>
-                  </div>
+                  <value [name]="'Strike'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
                 </div>
               </div>
               <div class="row">
                 <div class="col-10 col-md-8 col-lg-6">
-                  <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="pierce" placeholder="Pierce">
-                    <label for="pierce">Pierce</label>
-                  </div>
+                  <value [name]="'Pierce'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
                 </div>
                 <div class="col-10 col-md-8 col-lg-6">
-                  <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="slash" placeholder="Slash">
-                    <label for="slash">Slash</label>
-                  </div>
+                  <value [name]="'Slash'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
                 </div>
               </div>
               <div class="row">
                 <div class="col-10 col-md-8 col-lg-6">
-                  <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="magic" placeholder="Magic">
-                    <label for="magic">Magic</label>
-                  </div>
+                  <value [name]="'Magic'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
                 </div>
                 <div class="col-10 col-md-8 col-lg-6">
-                  <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="fire" placeholder="Fire">
-                    <label for="fire">Fire</label>
-                  </div>
+                  <value [name]="'Fire'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
                 </div>
               </div>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="holy" placeholder="Holy">
-                <label for="holy">Holy</label>
-              </div>
+              <value [name]="'Holy'" [isRequired]="false" [type]="'number'"></value>
             </div>
             <div class="col-10 col-md-8 col-lg-6">
               <h4>Resistance</h4>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="immunity" placeholder="Immunity">
-                <label for="immunity">Immunity</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="vitality" placeholder="Vitality">
-                <label for="vitality">Vitality</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="focus" placeholder="Focus">
-                <label for="focus">Focus</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="poise" placeholder="Poise">
-                <label for="poise">Poise</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input type="number" class="form-control" id="robustness" placeholder="Robustness">
-                <label for="robustness">Robustness</label>
-              </div>
+              <value [name]="'Immunity'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+              <value [name]="'Vitality'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+              <value [name]="'Focus'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+              <value [name]="'Poise'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+              <value [name]="'Robustness'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
             </div>
           </div>
         </div>
 
         <div *ngIf="this.selected == 'Weapon'">
-          <div class="border rounded border-primary p-2 overflow-hidden">
+          <div class="row border rounded border-primary p-2">
             <div class="row">
               <div class="col-10 col-md-8 col-lg-6">
                 <h4>Attack</h4>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="physical" placeholder="Physical">
-                  <label for="physical">Physical</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="magic" placeholder="Magic">
-                  <label for="magic">Magic</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="fire" placeholder="Fire">
-                  <label for="fire">Fire</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="lightning" placeholder="Lightning">
-                  <label for="lightning">Lightning</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="holy" placeholder="Holy">
-                  <label for="holy">Holy</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="critical" placeholder="Critical">
-                  <label for="critical">Critical</label>
-                </div>
+                <value [name]="'Physical'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                <value [name]="'Magic'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                <value [name]="'Fire'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                <value [name]="'Lightning'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                <value [name]="'Holy'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                <value [name]="'Critical'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
               </div>
               <div class="col-10 col-md-8 col-lg-6">
                 <h4>Guard</h4>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="physical" placeholder="Physical">
-                  <label for="physical">Physical</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="magic" placeholder="Magic">
-                  <label for="magic">Magic</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="fire" placeholder="Fire">
-                  <label for="fire">Fire</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="lightning" placeholder="Lightning">
-                  <label for="lightning">Lightning</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="holy" placeholder="Holy">
-                  <label for="holy">Holy</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input type="number" class="form-control" id="boost" placeholder="Boost">
-                  <label for="boost">Boost</label>
-                </div>
+                <value [name]="'Physical'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                <value [name]="'Magic'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                <value [name]="'Fire'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                <value [name]="'Lightning'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                <value [name]="'Holy'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                <value [name]="'Boost'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
               </div>
             </div>
             <div class="row">
@@ -182,7 +107,9 @@
                     <button class="btn btn-outline-secondary m-1" (click)="removeScaleField()">-</button>
                   </div>
                 </div>
-                <scale-field *ngFor="let scaleField of scaleFields"></scale-field>
+                <div class="form-control border-0">
+                  <scale-field *ngFor="let scaleField of scaleFields"></scale-field>
+                </div>
               </div>
               <div class="col-10 col-md-8 col-lg-6">
                 <div class="row">
@@ -194,7 +121,9 @@
                     <button class="btn btn-outline-secondary m-1" (click)="removeStatField()">-</button>
                   </div>
                 </div>
-                <stat-field *ngFor="let statField of statFields"></stat-field>
+                <div class="form-control border-0">
+                  <stat-field *ngFor="let statField of statFields"></stat-field>
+                </div>
               </div>
             </div>
           </div>

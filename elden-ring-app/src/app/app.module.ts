@@ -27,6 +27,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ScaleFieldComponent } from './components/scale-field/scale-field.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ScaleFieldComponent } from './components/scale-field/scale-field.compon
     MatRippleModule,
     MatSlideToggleModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearence: 'fill' } }
