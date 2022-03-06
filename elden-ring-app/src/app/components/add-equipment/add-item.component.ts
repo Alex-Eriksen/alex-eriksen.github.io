@@ -13,6 +13,18 @@ interface Category
   subcategory: SubCategory[];
 }
 
+interface StatField
+{
+  stat: string;
+  amount: number;
+}
+
+export interface ScaleField
+{
+  stat: string;
+  rank: string;
+}
+
 @Component({
   selector: 'app-add-item',
   templateUrl: './add-item.component.html',
@@ -23,8 +35,8 @@ export class AddItemComponent
   constructor() { }
 
   selected: string = "";
-  statFields: Array<number> = [];
-  scaleFields: Array<number> = [];
+  statFields: Array<StatField> = [];
+  scaleFields: Array<ScaleField> = [];
 
   public onSubmit(form: NgForm): void
   {
@@ -33,7 +45,7 @@ export class AddItemComponent
 
   public addStatField(): void
   {
-    this.statFields.push(1);
+    this.statFields.push({stat: "empty_stat_" + this.statFields.length, amount: 0});
   }
 
   public removeStatField(): void
@@ -41,14 +53,27 @@ export class AddItemComponent
     this.statFields.pop();
   }
 
+  public updateStatField(statField: StatField, newStat: string): void
+  {
+    this.statFields.find((e) => e.stat == statField.stat)!.stat = newStat;
+  }
+
   public addScaleField(): void
   {
-    this.scaleFields.push(1);
+    this.scaleFields.push({stat: "empty_stat_" + this.scaleFields.length, rank: "empty_rank"});
   }
 
   public removeScaleField(): void
   {
     this.scaleFields.pop();
+  }
+
+  public updateScaleField(scaleField: ScaleField, newScaleField: ScaleField): void
+  {
+    const local_scale_field = this.scaleFields.find((e) => e.stat == scaleField.stat);
+
+    local_scale_field!.stat = newScaleField.stat;
+    local_scale_field!.rank = newScaleField.rank;
   }
 
   public optionSelected(event: MatOptionSelectionChange): any
