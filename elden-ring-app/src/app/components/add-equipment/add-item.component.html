@@ -16,7 +16,7 @@
           </div>
           <div class="col-10 col-md-8 col-lg-6">
             <div class="form-floating mb-3" *ngIf="selection.value">
-              <value [name]="'Item Name'" [isRequired]="true" [type]="'text'" ngModel></value>
+              <value name="name" valueName="Item Name" [isRequired]="true" type="text" ngModel ngDefaultControl></value>
             </div>
           </div>
         </div>
@@ -24,11 +24,11 @@
         <div *ngIf="selection.value">
           <div class="row">
             <div class="col-10 col-md-8 col-lg-6">
-              <value [name]="'Set'" [isRequired]="false" [type]="'text'"></value>
+              <value name="set" valueName="Set" [isRequired]="true" type="text" ngModel ngDefaultControl></value>
             </div>
             <div class="col-10 col-md-8 col-lg-6">
               <div class="form-floating mb-3">
-                <value [name]="'Weight'" [isRequired]="true" [type]="'number'"></value>
+                <value name="weight" valueName="Weight" [isRequired]="true" type="number" ngModel ngDefaultControl></value>
               </div>
             </div>
           </div>
@@ -36,41 +36,41 @@
 
         <div *ngIf="this.selected == 'Armor'">
           <div class="row border rounded border-primary p-2">
-            <div class="col-10 col-md-8 col-lg-6">
+            <div class="col-10 col-md-8 col-lg-6" ngModelGroup="damageNegation">
               <h4>Damage Negation</h4>
               <div class="row">
                 <div class="col-10 col-md-8 col-lg-6">
-                  <value [name]="'Physical'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                  <value name="physical" [flex]=100 valueName="Physical" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
                 </div>
                 <div class="col-10 col-md-8 col-lg-6">
-                  <value [name]="'Strike'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                  <value name="strike" [flex]=100 valueName="Strike" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
                 </div>
               </div>
               <div class="row">
                 <div class="col-10 col-md-8 col-lg-6">
-                  <value [name]="'Pierce'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                  <value name="pierce" [flex]=100 valueName="Pierce" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
                 </div>
                 <div class="col-10 col-md-8 col-lg-6">
-                  <value [name]="'Slash'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                  <value name="slash" [flex]=100 valueName="Slash" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
                 </div>
               </div>
               <div class="row">
                 <div class="col-10 col-md-8 col-lg-6">
-                  <value [name]="'Magic'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                  <value name="magic" [flex]=100 valueName="Magic" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
                 </div>
                 <div class="col-10 col-md-8 col-lg-6">
-                  <value [name]="'Fire'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                  <value name="fire" [flex]=100 valueName="Fire" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
                 </div>
               </div>
-              <value [name]="'Holy'" [isRequired]="false" [type]="'number'"></value>
+              <value name="holy" [flex]=100 valueName="Holy" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
             </div>
-            <div class="col-10 col-md-8 col-lg-6">
+            <div class="col-10 col-md-8 col-lg-6" ngModelGroup="resistance">
               <h4>Resistance</h4>
-              <value [name]="'Immunity'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-              <value [name]="'Vitality'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-              <value [name]="'Focus'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-              <value [name]="'Poise'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-              <value [name]="'Robustness'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+              <value name="immunity" [flex]=100 valueName="Immunity" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+              <value name="vitality" [flex]=100 valueName="Vitality" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+              <value name="focus" [flex]=100 valueName="Focus" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+              <value name="poise" [flex]=100 valueName="Poise" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+              <value name="robustness" [flex]=100 valueName="Robustness" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
             </div>
           </div>
         </div>
@@ -80,21 +80,21 @@
             <div class="row">
               <div class="col-10 col-md-8 col-lg-6">
                 <h4>Attack</h4>
-                <value [name]="'Physical'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-                <value [name]="'Magic'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-                <value [name]="'Fire'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-                <value [name]="'Lightning'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-                <value [name]="'Holy'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-                <value [name]="'Critical'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                <value name="physical" [flex]=100 valueName="Physical" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="magic" [flex]=100 valueName="Magic" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="fire" [flex]=100 valueName="Fire" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="lightning" [flex]=100 valueName="Lightning" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="holy" [flex]=100 valueName="Holy" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="critical" [flex]=100 valueName="Critical" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
               </div>
               <div class="col-10 col-md-8 col-lg-6">
                 <h4>Guard</h4>
-                <value [name]="'Physical'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-                <value [name]="'Magic'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-                <value [name]="'Fire'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-                <value [name]="'Lightning'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-                <value [name]="'Holy'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
-                <value [name]="'Boost'" [flex]=100 [isRequired]="false" [type]="'number'"></value>
+                <value name="physical" [flex]=100 valueName="Physical" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="magic" [flex]=100 valueName="Magic" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="fire" [flex]=100 valueName="Fire" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="lightning" [flex]=100 valueName="Lightning" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="holy" [flex]=100 valueName="Holy" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="boost" [flex]=100 valueName="Boost" [isRequired]="false" type="number" ngModel ngDefaultControl></value>
               </div>
             </div>
             <div class="row">
@@ -104,12 +104,12 @@
                     <h4>Scaling</h4>
                   </div>
                   <div class="col-10 col-md-8 col-lg-6">
-                    <button class="btn btn-outline-secondary m-1" (click)="addScaleField()">+</button>
-                    <button class="btn btn-outline-secondary m-1" (click)="removeScaleField()">-</button>
+                    <button class="btn btn-outline-secondary m-1" (click)="addScaleField()" type="button">+</button>
+                    <button class="btn btn-outline-secondary m-1" (click)="removeScaleField()" type="button">-</button>
                   </div>
                 </div>
-                <div class="form-control border-0">
-                  <scale-field *ngFor="let scaleField of scaleFields"></scale-field>
+                <div class="form-control border-0" ngModelGroup="scaling">
+                  <scale-field *ngFor="let scaleField of scaleFields" (onScaleChange)="updateScaleField(scaleField, $event)" [name]="scaleField.stat" ngModel ngDefaultControl></scale-field>
                 </div>
               </div>
               <div class="col-10 col-md-8 col-lg-6">
@@ -118,12 +118,12 @@
                     <h4>Requires</h4>
                   </div>
                   <div class="col-10 col-md-8 col-lg-6">
-                    <button class="btn btn-outline-secondary m-1" (click)="addStatField()">+</button>
-                    <button class="btn btn-outline-secondary m-1" (click)="removeStatField()">-</button>
+                    <button class="btn btn-outline-secondary m-1" (click)="addStatField()" type="button">+</button>
+                    <button class="btn btn-outline-secondary m-1" (click)="removeStatField()" type="button">-</button>
                   </div>
                 </div>
-                <div class="form-control border-0">
-                  <stat-field *ngFor="let statField of statFields"></stat-field>
+                <div class="form-control border-0" ngModelGroup="requires">
+                  <stat-field *ngFor="let statField of statFields" (onStatChange)="updateStatField(statField, $event)" [name]="statField.stat" ngModel ngDefaultControl></stat-field>
                 </div>
               </div>
             </div>

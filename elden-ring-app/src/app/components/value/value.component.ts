@@ -1,5 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'value',
@@ -10,9 +9,8 @@ export class ValueComponent
 {
   constructor() { }
 
-  @Input() name!: string;
+  @Input() valueName!: string;
   @Input() type!: string;
   @Input() isRequired?: boolean;
   @Input() flex?: number;
-  @Output() input!: NgModel;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 export interface Stat
@@ -13,9 +13,14 @@ export interface Stat
 })
 export class StatFieldComponent
 {
-  @Output() selection!: string;
-
   constructor() { }
+
+  @Output() onStatChange: EventEmitter<string> = new EventEmitter();
+
+  statChanged(newName: string)
+  {
+    this.onStatChange.emit(newName);
+  }
 
   statControl = new FormControl();
   statGroup: Stat[] = [

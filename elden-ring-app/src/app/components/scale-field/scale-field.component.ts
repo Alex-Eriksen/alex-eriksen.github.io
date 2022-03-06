@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ScaleField } from '../add-equipment/add-item.component';
 import { Stat } from '../stat-field/stat-field.component';
 
 export interface Rank
@@ -17,6 +18,13 @@ export class ScaleFieldComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  @Output() onScaleChange: EventEmitter<ScaleField> = new EventEmitter();
+
+  scaleChanged(newName: string, newRank: string)
+  {
+    this.onScaleChange.emit({ stat: newName, rank: newRank });
   }
 
   statControl = new FormControl();
