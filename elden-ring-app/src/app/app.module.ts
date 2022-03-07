@@ -43,16 +43,8 @@ import { AngularMaterialModuleModule } from './modules/angular-material-module/a
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule implements OnInit
+export class AppModule
 {
-  constructor(private firestore: Firestore) {}
-
-  ngOnInit(): void
-  {
-    if (environment.emulator)
-    {
-      connectFirestoreEmulator(this.firestore, "localhost", 8081);
-    }
-  }
+  constructor() {}
 }
 

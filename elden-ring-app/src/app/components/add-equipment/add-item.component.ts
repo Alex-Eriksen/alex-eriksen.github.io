@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
 import { FormControl, NgForm } from '@angular/forms';
 import { MatOptionSelectionChange } from '@angular/material/core';
+import { connectFirestoreEmulator, doc, getDocs, setDoc } from 'firebase/firestore';
+import { environment } from 'src/environments/environment';
 
 interface SubCategory
 {
@@ -30,17 +33,52 @@ export interface ScaleField
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.css']
 })
-export class AddItemComponent
+export class AddItemComponent implements OnInit
 {
-  constructor() { }
+  constructor(private firestore: Firestore) { }
+
+  ngOnInit(): void
+  {
+    if (environment.emulator)
+    {
+      connectFirestoreEmulator(this.firestore, "localhost", 8081);
+    }
+    this.equipmentControl = new FormControl();
+  }
+
+  equipmentControl!: FormControl;
+  equipmentGroups: Category[] = [
+    {
+      name: "Armor",
+      subcategory: [
+        { name: "Helmet" },
+        { name: "Chest" },
+        { name: "Arms" },
+        { name: "Legs" }
+      ]
+    },
+    {
+      name: "Weapon",
+      subcategory: [
+        { name: "Dagger" },
+        { name: "Sword" },
+        { name: "Whip" },
+        { name: "Katana" },
+        { name: "Bow" },
+        { name: "Crossbow" },
+      ]
+    }
+  ]
 
   selected: string = "";
   statFields: Array<StatField> = [];
   scaleFields: Array<ScaleField> = [];
 
-  public onSubmit(form: NgForm): void
+  public async onSubmit(form: NgForm): Promise<void>
   {
-    console.log(form.value);
+    if (!form.valid) return;
+
+    await setDoc(doc(this.firestore, "Equipment", form.control.get('name')?.value), form.value);
   }
 
   public addStatField(): void
@@ -84,27 +122,5 @@ export class AddItemComponent
     }
   }
 
-  equipmentControl = new FormControl();
-  equipmentGroups: Category[] = [
-    {
-      name: "Armor",
-      subcategory: [
-        { name: "Helmet" },
-        { name: "Chest" },
-        { name: "Arms" },
-        { name: "Legs" }
-      ]
-    },
-    {
-      name: "Weapon",
-      subcategory: [
-        { name: "Dagger" },
-        { name: "Sword" },
-        { name: "Whip" },
-        { name: "Katana" },
-        { name: "Bow" },
-        { name: "Crossbow" },
-      ]
-    }
-  ]
+
 }
