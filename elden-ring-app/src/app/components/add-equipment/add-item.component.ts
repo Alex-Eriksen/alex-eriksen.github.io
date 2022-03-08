@@ -77,14 +77,6 @@ export class AddItemComponent implements OnInit
 
   public async onSubmit(form: NgForm): Promise<void>
   {
-    if (!form.valid)
-    {
-      console.log(form.errors);
-      return;
-    }
-
-    console.warn("On Submit Ran with no errors found.");
-
     await setDoc(doc(this.firestore, "Equipment", form.control.get('name')!.value), form.value);
   }
 
