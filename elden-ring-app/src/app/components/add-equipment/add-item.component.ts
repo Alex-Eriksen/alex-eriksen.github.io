@@ -42,6 +42,7 @@ export class AddItemComponent implements OnInit
     if (environment.emulator)
     {
       connectFirestoreEmulator(this.firestore, "localhost", 8081);
+      console.log("Connected to Emulator.");
     }
     this.equipmentControl = new FormControl();
   }
@@ -76,9 +77,15 @@ export class AddItemComponent implements OnInit
 
   public async onSubmit(form: NgForm): Promise<void>
   {
-    if (!form.valid) return;
+    if (!form.valid)
+    {
+      console.log(form.errors);
+      return;
+    }
 
-    await setDoc(doc(this.firestore, "Equipment", form.control.get('name')?.value), form.value);
+    console.warn("On Submit Ran with no errors found.");
+
+    await setDoc(doc(this.firestore, "Equipment", form.control.get('name')!.value), form.value);
   }
 
   public addStatField(): void
@@ -110,8 +117,20 @@ export class AddItemComponent implements OnInit
   {
     const local_scale_field = this.scaleFields.find((e) => e.stat == scaleField.stat);
 
-    local_scale_field!.stat = newScaleField.stat;
-    local_scale_field!.rank = newScaleField.rank;
+    if (newScaleField.rank && newScaleField.stat)
+    {
+      local_scale_field!.stat = newScaleField.stat;
+      local_scale_field!.rank = newScaleField.rank;
+    }
+
+    if(local_scale_field?.stat != scaleField.stat)
+    {
+      local_scale_field!.stat = newScaleField.stat;
+    }
+    if (newScaleField.rank)
+    {
+      local_scale_field!.rank = newScaleField.rank;
+    }
   }
 
   public optionSelected(event: MatOptionSelectionChange): any
