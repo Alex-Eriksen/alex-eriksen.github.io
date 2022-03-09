@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControlName, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'value',

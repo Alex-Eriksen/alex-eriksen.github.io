@@ -1,5 +1,4 @@
 <mat-form-field [fxFlex]="flex" appearance="outline">
   <mat-label>{{valueName}}</mat-label>
-  <input matInput [placeholder]="valueName" [type]="type" [attr.name]="name" [required]="required ? 'required' : false">
-  <mat-icon matSuffix>looks_one</mat-icon>
+  <input matInput #input [placeholder]="type == 'number' ? 'Ex. 4.6' : 'Ex. Kaiden'" [type]="type" [attr.name]="name" [required]="required ? 'required' : false">
 </mat-form-field>
