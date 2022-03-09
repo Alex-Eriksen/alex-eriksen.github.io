@@ -2,7 +2,9 @@
     <div class="col-10 col-md-8 col-lg-6">
 
       <form #form="ngForm" class="form-control p-5" (ngSubmit)="onSubmit(form)">
+
         <div class="row">
+          <span *ngIf="isInvalid" style="color: red; text-align: center;">Form is invalid.</span>
           <div class="col-10 col-md-8 col-lg-6">
             <mat-form-field appearance="fill">
               <mat-label>Category</mat-label>
@@ -16,7 +18,7 @@
           </div>
           <div class="col-10 col-md-8 col-lg-6">
             <div class="form-floating mb-3" *ngIf="selection.value">
-              <value name="name" valueName="Item Name" [required]="true" type="text" ngModel ngDefaultControl></value>
+              <value name="equipmentName" valueName="Item Name" [required]="true" type="text" ngModel ngDefaultControl></value>
             </div>
           </div>
         </div>
@@ -130,7 +132,10 @@
           </div>
         </div>
         <div class="row mt-2">
-          <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+          <button type="button" class="btn btn-outline-primary" (click)="onValidate(form)">Validate</button>
+        </div>
+        <div *ngIf="controlled" class="row mt-2">
+          <button class="btn btn-primary" type="submit">Submit</button>
         </div>
       </form>
     </div>

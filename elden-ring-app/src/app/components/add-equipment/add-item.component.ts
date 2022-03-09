@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { FormControl, NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatOptionSelectionChange } from '@angular/material/core';
 import { connectFirestoreEmulator, doc, getDocs, setDoc } from 'firebase/firestore';
 import { environment } from 'src/environments/environment';
@@ -35,7 +35,10 @@ export interface ScaleField
 })
 export class AddItemComponent implements OnInit
 {
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore, private formBuilder: FormBuilder) {}
+
+  controlled!: boolean | null;
+  isInvalid!: boolean | null;
 
   ngOnInit(): void
   {
@@ -44,6 +47,7 @@ export class AddItemComponent implements OnInit
       connectFirestoreEmulator(this.firestore, "localhost", 8081);
       console.log("Connected to Emulator.");
     }
+
     this.equipmentControl = new FormControl();
   }
 
@@ -74,6 +78,12 @@ export class AddItemComponent implements OnInit
   selected: string = "";
   statFields: Array<StatField> = [];
   scaleFields: Array<ScaleField> = [];
+
+  public onValidate(form: NgForm): void
+  {
+    this.controlled = form.valid;
+    this.isInvalid = !form.valid;
+  }
 
   public async onSubmit(form: NgForm): Promise<void>
   {

@@ -1,4 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'value',
@@ -11,6 +12,9 @@ export class ValueComponent
 
   @HostBinding('attr.required')
   @Input() required!: boolean;
+
+  @HostBinding('attr.name')
+  @Input() name!: string;
 
   @Input() valueName!: string;
   @Input() type!: string;
