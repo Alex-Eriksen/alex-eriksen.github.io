@@ -89,7 +89,16 @@ export class AddItemComponent implements OnInit
 
   public async onSubmit(form: NgForm): Promise<void>
   {
-    await setDoc(doc(this.firestore, "Equipment", form.control.get('name')!.value), form.value);
+    Object.keys(form.controls).forEach(key =>
+    {
+      if (form.controls[ key ].value === '')
+      {
+        form.controls[ key ].setValue(0);
+      }
+    });
+    console.log(form.value);
+    return;
+    await setDoc(doc(this.firestore, "Equipment", form.control.get('equipmentName')!.value), form.value);
   }
 
   public addStatField(): void
