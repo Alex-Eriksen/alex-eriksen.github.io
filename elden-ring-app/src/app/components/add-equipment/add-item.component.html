@@ -18,7 +18,7 @@
           </div>
           <div class="col-10 col-md-8 col-lg-6">
             <div class="form-floating mb-3" *ngIf="selection.value">
-              <value name="equipmentName" valueName="Item Name" [required]="true" type="text" ngModel ngDefaultControl></value>
+              <value name="equipmentName" label="Item Name" [submitted]="submitted" [required]="true" type="text" ngModel ngDefaultControl></value>
             </div>
           </div>
         </div>
@@ -26,11 +26,11 @@
         <div *ngIf="selection.value">
           <div class="row">
             <div class="col-10 col-md-8 col-lg-6">
-              <value name="set" valueName="Set" [required]="true" type="text" ngModel ngDefaultControl></value>
+              <value name="set" label="Set" [required]="true" type="text" ngModel ngDefaultControl></value>
             </div>
             <div class="col-10 col-md-8 col-lg-6">
               <div class="form-floating mb-3">
-                <value name="weight" valueName="Weight" [required]="true" type="number" ngModel ngDefaultControl></value>
+                <value name="weight" label="Weight" [submitted]="submitted" [required]="true" type="number" ngModel ngDefaultControl></value>
               </div>
             </div>
           </div>
@@ -42,37 +42,37 @@
               <h4>Damage Negation</h4>
               <div class="row">
                 <div class="col-10 col-md-8 col-lg-6">
-                  <value name="physical" [flex]=100 valueName="Physical" [required]="false" type="number" ngModel ngDefaultControl></value>
+                  <value name="physical" [flex]=100 label="Physical" [required]="false" type="number" ngModel ngDefaultControl></value>
                 </div>
                 <div class="col-10 col-md-8 col-lg-6">
-                  <value name="strike" [flex]=100 valueName="Strike" [required]="false" type="number" ngModel ngDefaultControl></value>
+                  <value name="strike" [flex]=100 label="Strike" [required]="false" type="number" ngModel ngDefaultControl></value>
                 </div>
               </div>
               <div class="row">
                 <div class="col-10 col-md-8 col-lg-6">
-                  <value name="pierce" [flex]=100 valueName="Pierce" [required]="false" type="number" ngModel ngDefaultControl></value>
+                  <value name="pierce" [flex]=100 label="Pierce" [required]="false" type="number" ngModel ngDefaultControl></value>
                 </div>
                 <div class="col-10 col-md-8 col-lg-6">
-                  <value name="slash" [flex]=100 valueName="Slash" [required]="false" type="number" ngModel ngDefaultControl></value>
+                  <value name="slash" [flex]=100 label="Slash" [required]="false" type="number" ngModel ngDefaultControl></value>
                 </div>
               </div>
               <div class="row">
                 <div class="col-10 col-md-8 col-lg-6">
-                  <value name="magic" [flex]=100 valueName="Magic" [required]="false" type="number" ngModel ngDefaultControl></value>
+                  <value name="magic" [flex]=100 label="Magic" [required]="false" type="number" ngModel ngDefaultControl></value>
                 </div>
                 <div class="col-10 col-md-8 col-lg-6">
-                  <value name="fire" [flex]=100 valueName="Fire" [required]="false" type="number" ngModel ngDefaultControl></value>
+                  <value name="fire" [flex]=100 label="Fire" [required]="false" type="number" ngModel ngDefaultControl></value>
                 </div>
               </div>
-              <value name="holy" [flex]=100 valueName="Holy" [required]="false" type="number" ngModel ngDefaultControl></value>
+              <value name="holy" [flex]=100 label="Holy" [required]="false" type="number" ngModel ngDefaultControl></value>
             </div>
             <div class="col-10 col-md-8 col-lg-6" ngModelGroup="resistance">
               <h4>Resistance</h4>
-              <value name="immunity" [flex]=100 valueName="Immunity" [required]="false" type="number" ngModel ngDefaultControl></value>
-              <value name="vitality" [flex]=100 valueName="Vitality" [required]="false" type="number" ngModel ngDefaultControl></value>
-              <value name="focus" [flex]=100 valueName="Focus" [required]="false" type="number" ngModel ngDefaultControl></value>
-              <value name="poise" [flex]=100 valueName="Poise" [required]="false" type="number" ngModel ngDefaultControl></value>
-              <value name="robustness" [flex]=100 valueName="Robustness" [required]="false" type="number" ngModel ngDefaultControl></value>
+              <value name="immunity" [flex]=100 label="Immunity" [required]="false" type="number" ngModel ngDefaultControl></value>
+              <value name="vitality" [flex]=100 label="Vitality" [required]="false" type="number" ngModel ngDefaultControl></value>
+              <value name="focus" [flex]=100 label="Focus" [required]="false" type="number" ngModel ngDefaultControl></value>
+              <value name="poise" [flex]=100 label="Poise" [required]="false" type="number" ngModel ngDefaultControl></value>
+              <value name="robustness" [flex]=100 label="Robustness" [required]="false" type="number" ngModel ngDefaultControl></value>
             </div>
           </div>
         </div>
@@ -82,21 +82,21 @@
             <div class="row">
               <div class="col-10 col-md-8 col-lg-6">
                 <h4>Attack</h4>
-                <value name="physical" [flex]=100 valueName="Physical" [required]="false" type="number" ngModel ngDefaultControl></value>
-                <value name="magic" [flex]=100 valueName="Magic" [required]="false" type="number" ngModel ngDefaultControl></value>
-                <value name="fire" [flex]=100 valueName="Fire" [required]="false" type="number" ngModel ngDefaultControl></value>
-                <value name="lightning" [flex]=100 valueName="Lightning" [required]="false" type="number" ngModel ngDefaultControl></value>
-                <value name="holy" [flex]=100 valueName="Holy" [required]="false" type="number" ngModel ngDefaultControl></value>
-                <value name="critical" [flex]=100 valueName="Critical" [required]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="physical" [flex]=100 label="Physical" [required]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="magic" [flex]=100 label="Magic" [required]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="fire" [flex]=100 label="Fire" [required]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="lightning" [flex]=100 label="Lightning" [required]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="holy" [flex]=100 label="Holy" [required]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="critical" [flex]=100 label="Critical" [required]="false" type="number" ngModel ngDefaultControl></value>
               </div>
               <div class="col-10 col-md-8 col-lg-6">
                 <h4>Guard</h4>
-                <value name="physical" [flex]=100 valueName="Physical" [required]="false" type="number" ngModel ngDefaultControl></value>
-                <value name="magic" [flex]=100 valueName="Magic" [required]="false" type="number" ngModel ngDefaultControl></value>
-                <value name="fire" [flex]=100 valueName="Fire" [required]="false" type="number" ngModel ngDefaultControl></value>
-                <value name="lightning" [flex]=100 valueName="Lightning" [required]="false" type="number" ngModel ngDefaultControl></value>
-                <value name="holy" [flex]=100 valueName="Holy" [required]="false" type="number" ngModel ngDefaultControl></value>
-                <value name="boost" [flex]=100 valueName="Boost" [required]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="physical" [flex]=100 label="Physical" [required]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="magic" [flex]=100 label="Magic" [required]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="fire" [flex]=100 label="Fire" [required]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="lightning" [flex]=100 label="Lightning" [required]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="holy" [flex]=100 label="Holy" [required]="false" type="number" ngModel ngDefaultControl></value>
+                <value name="boost" [flex]=100 label="Boost" [required]="false" type="number" ngModel ngDefaultControl></value>
               </div>
             </div>
             <div class="row">

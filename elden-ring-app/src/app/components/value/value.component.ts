@@ -13,10 +13,12 @@ export class ValueComponent
   @HostBinding('attr.required')
   @Input() required!: boolean;
 
+  @Input() submitted!: boolean;
+
   @HostBinding('attr.name')
   @Input() name!: string;
 
-  @Input() valueName!: string;
+  @Input() label!: string;
   @Input() type!: string;
   @Input() flex?: number;
 }

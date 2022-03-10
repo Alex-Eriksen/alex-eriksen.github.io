@@ -1,4 +1,8 @@
 <mat-form-field [fxFlex]="flex" appearance="outline">
-  <mat-label>{{valueName}}</mat-label>
-  <input matInput #input [placeholder]="type == 'number' ? 'Ex. 4.6' : 'Ex. Kaiden'" [type]="type" [attr.name]="name" [required]="required ? 'required' : false">
+  <mat-label>{{label}}</mat-label>
+  <input matInput #input="ngModel" ngModel [placeholder]="type == 'number' ? 'Ex. 4.6' : 'Ex. Kaiden'" [type]="type" [attr.name]="name" [required]="required ? 'required' : false">
+  <div *ngIf="submitted">
+    <mat-error *ngIf="input.errors?.['type']"> {{ label }} must be of type {{ type }}!</mat-error>
+      <mat-error *ngIf="input.errors?.['required']"> {{ label }} is <strong>required!</strong> </mat-error>
+  </div>
 </mat-form-field>

@@ -78,11 +78,13 @@ export class AddItemComponent implements OnInit
   selected: string = "";
   statFields: Array<StatField> = [];
   scaleFields: Array<ScaleField> = [];
+  submitted: boolean = false;
 
   public onValidate(form: NgForm): void
   {
     this.controlled = form.valid;
     this.isInvalid = !form.valid;
+    this.submitted = true;
   }
 
   public async onSubmit(form: NgForm): Promise<void>
