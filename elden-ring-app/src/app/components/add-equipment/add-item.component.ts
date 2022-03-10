@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, NgModel, Validators } from '@angular/forms';
 import { MatOptionSelectionChange } from '@angular/material/core';
 import { connectFirestoreEmulator, doc, getDocs, setDoc } from 'firebase/firestore';
 import { environment } from 'src/environments/environment';
@@ -91,6 +91,16 @@ export class AddItemComponent implements OnInit
   {
     Object.keys(form.controls).forEach(key =>
     {
+      if (form.controls[ key ].value instanceof Object)
+      {
+        Object.keys(form.controls[ key ].value).forEach(nestedKeys =>
+        {
+          if (form.controls[ key ].value[nestedKeys] === '')
+          {
+            form.controls[ key ].value[nestedKeys] = "0";
+          }
+        });
+      }
       if (form.controls[ key ].value === '')
       {
         form.controls[ key ].setValue(0);
