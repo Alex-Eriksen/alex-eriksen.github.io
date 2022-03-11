@@ -13,8 +13,6 @@ export class ValueComponent
   @HostBinding('attr.required')
   @Input() required!: boolean;
 
-  @Input() submitted!: boolean;
-
   @HostBinding('attr.name')
   @Input() name!: string;
 

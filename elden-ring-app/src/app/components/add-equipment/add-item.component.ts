@@ -84,7 +84,6 @@ export class AddItemComponent implements OnInit
   {
     this.controlled = form.valid;
     this.isInvalid = !form.valid;
-    this.submitted = true;
   }
 
   public async onSubmit(form: NgForm): Promise<void>
@@ -103,7 +102,7 @@ export class AddItemComponent implements OnInit
       }
       if (form.controls[ key ].value === '')
       {
-        form.controls[ key ].setValue(0);
+        form.controls[ key ].setValue("0");
       }
     });
     console.log(form.value);
