@@ -106,7 +106,6 @@ export class AddItemComponent implements OnInit
       }
     });
     console.log(form.value);
-    return;
     await setDoc(doc(this.firestore, "Equipment", form.control.get('equipmentName')!.value), form.value);
   }
 

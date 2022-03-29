@@ -17,6 +17,8 @@ import { ScaleFieldComponent } from './components/scale-field/scale-field.compon
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { AngularMaterialModuleModule } from './modules/angular-material-module/angular-material-module.module';
 import { USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/compat/firestore';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/compat/fir
     AddItemComponent,
     StatFieldComponent,
     ValueComponent,
-    ScaleFieldComponent
+    ScaleFieldComponent,
+    MainPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
