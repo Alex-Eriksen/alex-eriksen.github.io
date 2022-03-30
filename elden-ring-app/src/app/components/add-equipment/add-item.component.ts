@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { FormBuilder, FormControl, FormGroup, NgForm, NgModel, Validators } from '@angular/forms';
 import { MatOptionSelectionChange } from '@angular/material/core';
+import { Router } from '@angular/router';
 import { connectFirestoreEmulator, doc, getDocs, setDoc } from 'firebase/firestore';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 interface SubCategory
@@ -35,10 +37,12 @@ export interface ScaleField
 })
 export class AddItemComponent implements OnInit
 {
-  constructor(private firestore: Firestore, private formBuilder: FormBuilder) {}
+  constructor(private firestore: Firestore, private router: Router) {}
 
   controlled!: boolean | null;
   isInvalid!: boolean | null;
+
+  public static OnItemAdded: Subject<string> = new Subject<string>();
 
   ngOnInit(): void
   {
@@ -88,25 +92,48 @@ export class AddItemComponent implements OnInit
 
   public async onSubmit(form: NgForm): Promise<void>
   {
-    Object.keys(form.controls).forEach(key =>
+    return await new Promise( async(resolve) =>
     {
-      if (form.controls[ key ].value instanceof Object)
+      Object.keys(form.controls).forEach(key =>
       {
-        Object.keys(form.controls[ key ].value).forEach(nestedKeys =>
+        if (form.controls[ key ].value instanceof Object)
         {
-          if (form.controls[ key ].value[nestedKeys] === '')
+          Object.keys(form.controls[ key ].value).forEach(nestedKeys =>
           {
-            form.controls[ key ].value[nestedKeys] = "0";
-          }
-        });
-      }
-      if (form.controls[ key ].value === '')
+            if (form.controls[ key ].value[nestedKeys] === '')
+            {
+              form.controls[ key ].value[nestedKeys] = "0";
+            }
+          });
+        }
+        if (form.controls[ key ].value === '')
+        {
+          form.controls[ key ].setValue("0");
+        }
+      });
+      form.control.addControl('equipmentType', this.equipmentControl);
+      await setDoc(
+        doc(
+          this.firestore,
+          "Equipment",
+          this.selected,
+          form.control.get('equipmentType')!.value,
+          form.control.get('equipmentName')!.value
+        ),
+        form.value
+      )
+      .then(() =>
       {
-        form.controls[ key ].setValue("0");
-      }
+        this.ItemAdded(form.control.get('equipmentName')!.value);
+        resolve();
+      });
     });
-    console.log(form.value);
-    await setDoc(doc(this.firestore, "Equipment", form.control.get('type')!.value, form.control.get('equipmentName')!.value), form.value);
+  }
+
+  private ItemAdded(equipmentName: string): void
+  {
+    AddItemComponent.OnItemAdded.next(equipmentName);
+    this.router.navigate(['/']);
   }
 
   public addStatField(): void
@@ -159,9 +186,6 @@ export class AddItemComponent implements OnInit
     if (event.isUserInput)
     {
       this.selected = event.source.group.label;
-      console.log(this.selected);
     }
   }
-
-
 }
