@@ -106,7 +106,7 @@ export class AddItemComponent implements OnInit
       }
     });
     console.log(form.value);
-    await setDoc(doc(this.firestore, "Equipment", form.control.get('equipmentName')!.value), form.value);
+    await setDoc(doc(this.firestore, "Equipment", form.control.get('type')!.value, form.control.get('equipmentName')!.value), form.value);
   }
 
   public addStatField(): void
@@ -159,6 +159,7 @@ export class AddItemComponent implements OnInit
     if (event.isUserInput)
     {
       this.selected = event.source.group.label;
+      console.log(this.selected);
     }
   }
 
