@@ -19,6 +19,7 @@ import { AngularMaterialModuleModule } from './modules/angular-material-module/a
 import { USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/compat/firestore';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ViewPageComponent } from './pages/view-page/view-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HeaderComponent } from './components/header/header.component';
     ValueComponent,
     ScaleFieldComponent,
     MainPageComponent,
-    HeaderComponent
+    HeaderComponent,
+    ViewPageComponent
   ],
   imports: [
     BrowserModule,

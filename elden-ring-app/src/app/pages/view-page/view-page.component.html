@@ -1,0 +1,9 @@
+<form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto input-group">
+  <input #equipmentName type="search" class="form-control" placeholder="Equipment Name..." aria-label="Search">
+  <button class="btn btn-primary" type="button" id="equipmentNameSearch" (click)="this.getEquipment(equipmentName.value)">Search</button>
+</form>
+<div>
+  <div *ngFor="let equipment of this.equipment">
+    <p>{{equipment}}</p>
+  </div>
+</div>
