@@ -1,11 +1,14 @@
 :host {
-  width: 100%;
-  position: static;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: var(--header-bg-color);
-  padding: 1rem;
+	height: var(--header-height);
+	top: 0;
+	width: 100%;
+	position: fixed;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: var(--header-bg-color);
+	padding: 1rem;
+	box-shadow: 0px 0px 4px -2px black;
 }
 
 .navbar {
