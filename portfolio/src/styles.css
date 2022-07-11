@@ -3,3 +3,24 @@
   padding: 0;
   margin: 0;
 }
+
+body {
+	--header-bg-color: #cecece;
+}
+
+body.dark-mode {
+	--header-bg-color: #333;
+}
+
+.v-div {
+	display: block;
+	width: 100%;
+	height: 1px;
+	background-color: #fff;
+}
+
+.h-div {
+	width: 1px;
+	background-color: #fff;
+	height: 100%;
+}

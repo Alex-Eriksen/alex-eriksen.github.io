@@ -1,1 +1,11 @@
-<h1>TEST</h1>
+<div class="navbar">
+	<button>Home</button>
+</div>
+<div class="functions">
+	<i class="fa-solid fa-sun fa-fw" *ngIf="!darkmode" (click)="toggle_theme()"></i>
+	<i class="fa-solid fa-moon fa-fw" *ngIf="darkmode" (click)="toggle_theme()"></i>
+	<div class="h-div"></div>
+	<a href="https://github.com/Alex-Eriksen/alex-eriksen.github.io" target="_blank">
+		<i class="fa-brands fa-github fa-fw"></i>
+	</a>
+</div>
