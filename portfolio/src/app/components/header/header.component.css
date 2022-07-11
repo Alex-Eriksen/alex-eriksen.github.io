@@ -3,11 +3,26 @@
   position: static;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   background-color: var(--header-bg-color);
   padding: 1rem;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
 }
 
 .functions {
 	display: flex;
 	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.functions i {
+	font-size: 1.5rem;
+	color: var(--icon-color);
 }

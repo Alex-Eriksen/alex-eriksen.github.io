@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=Open+Sans:wght@300;400&display=swap');
+
 @media (min-width: 576px) {
 	:root {
 		font-size: 14px;
@@ -21,25 +23,54 @@
   padding: 0;
   margin: 0;
   font-size: 1rem;
+  font-family: Barlow;
 }
 
 body {
 	--header-bg-color: #cecece;
+	--icon-color: #585858;
+
+	--button-bg-color: #00b600;
+	--button-hov-bg-color: #009700;
+
+	--background-color: #fff;
+
+	background-color: var(--background-color);
 }
 
 body.dark-mode {
 	--header-bg-color: #333;
+	--icon-color: #fff;
+
+	--button-bg-color: #00a000;
+	--button-hov-bg-color: #007200;
+
+	--background-color: #444;
+}
+
+button {
+	border: none;
+	outline: none;
+	padding: 0.5rem;
+	color: #fff;
+	background-color: var(--button-bg-color);
+	transition: all 0.1s;
+}
+
+button:hover {
+	cursor: pointer;
+	background-color: var(--button-hov-bg-color);
 }
 
 .v-div {
 	display: block;
-	width: 100%;
-	height: 1px;
-	background-color: #fff;
+	height: 100%;
+	width: 0.1rem;
+	background-color: var(--icon-color);
 }
 
 .h-div {
-	width: 1px;
-	background-color: #fff;
-	height: 100%;
+	height: 0.1rem;
+	width: 100%;
+	background-color: var(--icon-color);
 }
