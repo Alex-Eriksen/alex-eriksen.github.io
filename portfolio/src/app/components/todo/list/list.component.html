@@ -6,7 +6,7 @@
 	class="list-name"
 	(keydown.enter)="canChange = false"
 	(keydown.enter)="canChange = false"
-	(dblclick)="canChange = true"
+	(click)="canChange = true"
 	(focusout)="canChange = false"
 	[readonly]="!canChange"
 	[ngClass]="canChange ? 'editable' : ''"

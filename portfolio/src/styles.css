@@ -159,6 +159,12 @@ input {
 	outline: none;
 }
 
+textarea {
+	border: none;
+	color: var(--paragraph-color);
+	outline: none;
+}
+
 a {
 	text-decoration: none;
 }

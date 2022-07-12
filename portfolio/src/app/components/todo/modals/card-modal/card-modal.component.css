@@ -33,7 +33,32 @@
 	border-radius: 0.25rem;
 }
 
+.modal-content {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 0.5rem;
+	width: 100%;
+}
+
 .modal-header {
 	width: 100%;
 	border-bottom: 0.1rem var(--icon-color) solid;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: baseline;
 }
+
+input {
+	background: transparent;
+}
+
+#descriptionInput {
+	background-color: var(--header-bg-color);
+	padding: 0.5rem;
+	width: 100%;
+	min-height: 12rem;
+	resize: none;
+}
+

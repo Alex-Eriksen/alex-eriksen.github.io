@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GUID } from '../../main/helpers';
-import { Card, List } from '../interfaces';
+import { Card, Checklist, List } from '../interfaces';
 import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { KeyValue } from '@angular/common';
 
@@ -21,12 +21,18 @@ export class ListComponent implements OnInit {
 
 	public addCard(): void
 	{
+		let checkList: Checklist = {
+			guid: GUID.newGUID(),
+			name: "New Checklist",
+			items: []
+		}
 		let newCard: Card = {
 			guid: GUID.newGUID(),
 			name: "New Card",
 			list: this.list,
 			description: "",
-			creationDate: Date.now()
+			creationDate: Date.now(),
+			checklist: checkList
 		};
 		this.list.cards.push({ key: newCard.guid, value: newCard });
 	}
