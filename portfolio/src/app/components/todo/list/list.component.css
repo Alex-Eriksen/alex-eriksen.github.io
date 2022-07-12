@@ -1,0 +1,30 @@
+.list-container {
+	background-color: var(--list-bg-color);
+	padding: 0.25rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	width: 14rem;
+}
+
+.list-name {
+	font-size: 1.5rem;
+	text-align: center;
+	background: transparent;
+}
+
+.list-actions {
+	display: flex;
+	flex-direction: row;
+}
+
+.list-cards {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.action-btn {
+	width: 2rem;
+	height: 2rem;
+}

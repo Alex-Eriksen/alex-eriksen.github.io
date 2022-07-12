@@ -1,0 +1,45 @@
+:host {
+	overflow: hidden;
+}
+
+.board-actions {
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	z-index: 999;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.board-info {
+	position: fixed;
+	bottom: 1rem;
+	left: 1rem;
+	z-index: 999;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: flex-start;
+}
+
+.board-info > p {
+	color: #888;
+}
+
+.action-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 2.5rem;
+	width: 2.5rem;
+	box-shadow: 2px 3px 6px -2px black;
+}
+
+.board-lists {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+}

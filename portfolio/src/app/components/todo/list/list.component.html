@@ -1,0 +1,20 @@
+<div class="list-container">
+	<input
+	#listName
+	type="text"
+	class="list-name"
+	(keydown.enter)="canChange = false"
+	(keydown.enter)="canChange = false"
+	(dblclick)="canChange = true"
+	(focusout)="canChange = false"
+	[readonly]="!canChange"
+	[ngClass]="canChange ? 'editable' : ''"
+	value="{{list.name}}" (change)="list.name = listName.value">
+
+	<div class="list-cards">
+		<kanban-card *ngFor="let card of list.cards" [card]="card.value" [id]="card.key" (dragstart)="dragStart($event)" (dragover)="dragOver($event)" draggable="true"></kanban-card>
+	</div>
+	<div class="list-actions">
+		<button class="action-btn" (click)="addCard()"><i class="fa-solid fa-plus"></i></button>
+	</div>
+</div>
