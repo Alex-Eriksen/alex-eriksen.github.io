@@ -23,7 +23,8 @@ export class BoardComponent implements OnInit
 		this.board = {
 			guid: GUID.newGUID(),
 			name: "New Board",
-			lists: []
+			lists: [],
+			listRefs: []
 		};
 	}
 

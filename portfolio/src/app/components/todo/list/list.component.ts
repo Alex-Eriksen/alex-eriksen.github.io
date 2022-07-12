@@ -1,6 +1,8 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GUID } from '../../main/helpers';
 import { Card, List } from '../interfaces';
+import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { KeyValue } from '@angular/common';
 
 @Component({
 	selector: 'kanban-list',
@@ -13,10 +15,9 @@ export class ListComponent implements OnInit {
 
 	@Input() list!: List;
 
-	@ViewChild('listName') listNameElement!: ElementRef<HTMLInputElement>;
 	public canChange: boolean = false;
 
-	ngOnInit(): void { }
+	ngOnInit(): void {}
 
 	public addCard(): void
 	{
@@ -30,13 +31,20 @@ export class ListComponent implements OnInit {
 		this.list.cards.push({ key: newCard.guid, value: newCard });
 	}
 
-	public dragStart(event: DragEvent): void
+	public drop(event: CdkDragDrop<KeyValue<string, Card>[]>): void
 	{
-		console.log(event);
-	}
-
-	public dragOver(event: DragEvent): void
-	{
-		console.log(event);
-	}
+		if (event.previousContainer === event.container)
+		{
+		  	moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+		}
+		else
+		{
+		  	transferArrayItem(
+				event.previousContainer.data,
+				event.container.data,
+				event.previousIndex,
+				event.currentIndex,
+		  	);
+		}
+	  }
 }

@@ -34,10 +34,10 @@ body {
 
 	--paragraph-color: #000;
 
-	--list-bg-color: #212224;
-	--list-hov-bg-color: #1d2e28;
-	--card-bg-color: #0f5132;
-	--card-hov-bg-color: #0a5c36;
+	--list-bg-color: #b7bcc4;
+	--list-hov-bg-color: #72b69e;
+	--card-bg-color: #26b873;
+	--card-hov-bg-color: #139659;
 
 	--border-color: #0e62cf;
 
@@ -149,7 +149,6 @@ p {
 }
 
 .editable {
-	padding: 0.2rem!important;
 	background-color: #fff!important;
 	color: #000!important;
 }
@@ -173,3 +172,6 @@ a {
 @media (min-width: 1200px) {
 
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,11 @@
+<input
+#input
+type="text"
+class="list-name"
+(keydown.enter)="canChange = false"
+(keydown.enter)="canChange = false"
+(dblclick)="canChange = true"
+(focusout)="canChange = false"
+[readonly]="!canChange"
+[ngClass]="canChange ? 'editable' : ''"
+value="{{data.name}}" (change)="data.name = input.value">

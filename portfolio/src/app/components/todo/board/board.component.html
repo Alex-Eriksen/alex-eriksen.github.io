@@ -5,6 +5,6 @@
 	<p>List Count: {{board.lists.length}}</p>
 	<p>Board: {{board.name}}</p>
 </div>
-<div class="board-lists">
+<div class="board-lists" cdkDropListGroup>
 	<kanban-list *ngFor="let list of board.lists" [list]="list.value" [id]="list.key"></kanban-list>
 </div>
