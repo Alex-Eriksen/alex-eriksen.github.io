@@ -85,13 +85,13 @@ export class CalculatorComponent implements OnInit
 
 		equationQueue.sort((a, b) => this.predicate(a.operator, b.operator));
 
-		for (let i = 0; i < equationQueue.length; i++)
+		let i = 0;
+		for (const equation of equationQueue)
 		{
 			const isLast: boolean = (i == equationQueue.length - 1);
-			const equation: Equation = equationQueue[ i ];
 			let outcome: number = 0;
 
-			switch (equationQueue[ i ].operator)
+			switch (equation.operator)
 			{
 				case Operator.Multiply:
 					outcome = Math.Mul(equation.numA, equation.numB);
@@ -100,11 +100,10 @@ export class CalculatorComponent implements OnInit
 					{
 						equationQueue[ i + 1 ].numA = outcome;
 					}
-					equationQueue.splice(i, 1);
-					break;
+						break;
 
 				case Operator.Divide:
-					break;
+						break;
 
 				case Operator.Add:
 					outcome = Math.Add(equation.numA, equation.numB);
@@ -113,15 +112,15 @@ export class CalculatorComponent implements OnInit
 					{
 						equationQueue[ i + 1 ].numA = outcome;
 					}
-					equationQueue.splice(i, 1);
-					break;
-
-					case Operator.Subtract:
 						break;
-			}
-			result += outcome;
-		}
 
+				case Operator.Subtract:
+					break;
+			}
+			equationQueue.splice(i, 1);
+			result += outcome;
+			i++;
+		}
 		return result;
 	}
 }
