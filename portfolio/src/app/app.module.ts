@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditableTextComponent } from './components/editable-text/editable-text.component';
 import { ChecklistComponent } from './components/todo/checklist/checklist.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { CalculatorComponent } from './components/calculator/calculator/calculator.component';
 
 @NgModule({
   	declarations: [
@@ -28,7 +29,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     	CardComponent,
      CardModalComponent,
      EditableTextComponent,
-     ChecklistComponent
+     ChecklistComponent,
+     CalculatorComponent
   	],
   	imports: [
     	BrowserModule,

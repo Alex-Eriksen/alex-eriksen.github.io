@@ -46,6 +46,8 @@ body {
 	--checklist-item-bg1: #bdbdbd;
 	--checklist-item-bg2: #a1a1a1;
 
+	--calculator-btn-bg-color1: #006d00;
+
 	background-color: var(--background-color);
 }
 
@@ -69,6 +71,8 @@ body.dark-mode {
 
 	--checklist-item-bg1: #444;
 	--checklist-item-bg2: #555;
+
+	--calculator-btn-bg-color1: #00a300;
 }
 
 button {
