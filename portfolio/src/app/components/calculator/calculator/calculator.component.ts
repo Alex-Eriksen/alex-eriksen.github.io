@@ -100,10 +100,10 @@ export class CalculatorComponent implements OnInit
 					{
 						equationQueue[ i + 1 ].numA = outcome;
 					}
-						break;
+					break;
 
 				case Operator.Divide:
-						break;
+					break;
 
 				case Operator.Add:
 					outcome = Math.Add(equation.numA, equation.numB);
@@ -112,7 +112,7 @@ export class CalculatorComponent implements OnInit
 					{
 						equationQueue[ i + 1 ].numA = outcome;
 					}
-						break;
+					break;
 
 				case Operator.Subtract:
 					break;
