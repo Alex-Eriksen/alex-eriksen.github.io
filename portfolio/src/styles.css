@@ -43,6 +43,9 @@ body {
 
 	--header-height: 5rem;
 
+	--checklist-item-bg1: #bdbdbd;
+	--checklist-item-bg2: #a1a1a1;
+
 	background-color: var(--background-color);
 }
 
@@ -63,6 +66,9 @@ body.dark-mode {
 	--card-hov-bg-color: #0a5c36;
 
 	--border-color: #1f7ffc;
+
+	--checklist-item-bg1: #444;
+	--checklist-item-bg2: #555;
 }
 
 button {
@@ -151,6 +157,8 @@ p {
 .editable {
 	background-color: #fff!important;
 	color: #000!important;
+	opacity: 1!important;
+	text-decoration: none!important;
 }
 
 input {

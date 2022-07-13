@@ -1,0 +1,44 @@
+:host {
+	margin: 0 auto;
+	width: 100%;
+}
+
+.checklist-container {
+	padding: 0.25rem;
+	background-color: var(--header-bg-color);
+	color: var(--paragraph-color);
+	width: 100%;
+	max-width: 12rem;
+}
+
+.checklist-items {
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+	min-height: 4rem;
+}
+
+.checklist-items > tr {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.15rem;
+	background-color: var(--checklist-item-bg1);
+}
+
+.checklist-items > tr:nth-child(even) {
+	background-color: var(--checklist-item-bg2);
+}
+
+#item-check {
+	flex: 0.25;
+	display: flex;
+	justify-content: start;
+	align-items: center;
+}
+
+input[type="checkbox"] {
+	border: none;
+
+}

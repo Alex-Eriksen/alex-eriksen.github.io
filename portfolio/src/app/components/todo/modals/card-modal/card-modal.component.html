@@ -3,42 +3,28 @@
 <div class="modal-container">
 	<div class="modal-header">
 		<editable-text [data]="data"></editable-text>
-		<p>Creation Date: {{data.creationDate | date}}</p>
+		<p id="creation-date">Creation Date: {{data.creationDate | date}}</p>
 	</div>
 	<div class="modal-content">
 		<div>
 			<p>Description:</p>
 			<textarea
-			#description
-			id="descriptionInput"
-			type="text"
-			class="list-name"
-			(keydown.enter)="canChange = false"
-			(keydown.enter)="canChange = false"
-			(click)="canChange = true"
-			(focusout)="canChange = false"
-			[readonly]="!canChange"
-			[ngClass]="canChange ? 'editable' : ''"
-			value="{{data.description}}"
-			(change)="data.description = description.value" placeholder="No description, yet!"></textarea>
+				#description
+				id="descriptionInput"
+				type="text"
+				class="list-name"
+				(keydown.enter)="canChange = false"
+				(keydown.enter)="canChange = false"
+				(click)="canChange = true"
+				(focusout)="canChange = false"
+				[readonly]="!canChange"
+				[ngClass]="canChange ? 'editable' : ''"
+				value="{{data.description}}"
+				(change)="data.description = description.value" placeholder="No description, yet!">
+			</textarea>
 		</div>
 		<div>
-			<table>
-				<thead>
-					<tr>
-						<td>{{data.checklist.name}}</td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr *ngFor="let item of data.checklist.items">
-						<td><input #checkItem type="checkbox" [value]="item.key"></td>
-						<td>{{item.value}}</td>
-					</tr>
-				</tbody>
-			</table>
-			<div class="checklist-actions">
-				<button class="action-btn" (click)="addChecklistItem()"><i class="fa-solid fa-plus"></i></button>
-			</div>
+			<checklist [data]="data.checklist"></checklist>
 		</div>
 	</div>
 </div>

@@ -14,6 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CardModalComponent } from './components/todo/modals/card-modal/card-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditableTextComponent } from './components/editable-text/editable-text.component';
+import { ChecklistComponent } from './components/todo/checklist/checklist.component';
 
 @NgModule({
   	declarations: [
@@ -25,7 +26,8 @@ import { EditableTextComponent } from './components/editable-text/editable-text.
     	ListComponent,
     	CardComponent,
      CardModalComponent,
-     EditableTextComponent
+     EditableTextComponent,
+     ChecklistComponent
   	],
   	imports: [
     	BrowserModule,

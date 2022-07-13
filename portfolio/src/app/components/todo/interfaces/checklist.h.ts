@@ -3,5 +3,10 @@ import { Item } from "./item.h";
 
 export interface Checklist extends Item
 {
-	items: KeyValue<boolean, string>[];
+	items: ChecklistItem[];
+}
+
+export interface ChecklistItem extends Item
+{
+	status: boolean;
 }

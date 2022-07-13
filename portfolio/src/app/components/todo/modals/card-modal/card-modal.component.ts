@@ -17,9 +17,4 @@ export class CardModalComponent
 	{
 		this.dialogRef.close();
 	}
-
-	public addChecklistItem(): void
-	{
-		this.data.checklist.items.push({key: false, value: "Empty Item"})
-	}
 }

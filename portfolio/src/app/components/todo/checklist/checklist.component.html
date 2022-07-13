@@ -1,0 +1,17 @@
+<table class="checklist-container">
+	<thead>
+		<tr>
+			<td><editable-text [data]="data"></editable-text></td>
+		</tr>
+		<div class="h-div"></div>
+	</thead>
+	<tbody class="checklist-items">
+		<tr *ngFor="let item of data.items">
+			<td id="item-check"><input #checkItem type="checkbox" [checked]="item.status" (change)="item.status = !item.status"></td>
+			<td id="item-name"><editable-text [data]="item" [ngStyle]="{ 'text-decoration': item.status ? 'line-through' : '', 'opacity': item.status ? '0.5' : '1' }" style="text-align: right;"></editable-text></td>
+		</tr>
+	</tbody>
+</table>
+<div class="checklist-actions">
+	<button class="action-btn" (click)="addChecklistItem()"><i class="fa-solid fa-plus"></i></button>
+</div>
