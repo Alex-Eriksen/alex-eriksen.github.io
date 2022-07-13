@@ -1,0 +1,12 @@
+input {
+	background-color: var(--header-bg-color);
+	padding: 0.25rem;
+	-moz-appearance: textfield;
+}
+
+select {
+	border: none;
+	padding: 0.25rem;
+	background-color: var(--header-bg-color);
+	color: var(--paragraph-color);
+}

@@ -1,0 +1,18 @@
+<div class="weight-container">
+	<input #weightAmount id="weight-amount" type="number" (keyup)="amount(weightAmount.value)">
+	<select #weightFrom id="weight-from" value="kg" (change)="select(weightFrom.value)">
+		<option value="kg">kg</option>
+		<option value="lbs">lbs</option>
+		<option value="g">g</option>
+		<option value="oz">oz</option>
+		<option value="st">st</option>
+	</select>
+	<table>
+		<tbody>
+			<tr>
+				<td><p>OUTPUT</p></td>
+			</tr>
+			<tr *ngFor="let item of output"><p>{{item.value}} {{item.key}}</p></tr>
+		</tbody>
+	</table>
+</div>

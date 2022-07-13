@@ -17,6 +17,7 @@ import { EditableTextComponent } from './components/editable-text/editable-text.
 import { ChecklistComponent } from './components/todo/checklist/checklist.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CalculatorComponent } from './components/calculator/calculator/calculator.component';
+import { WeightConverterComponent } from './components/weightConverter/weight-converter/weight-converter.component';
 
 @NgModule({
   	declarations: [
@@ -30,7 +31,8 @@ import { CalculatorComponent } from './components/calculator/calculator/calculat
      CardModalComponent,
      EditableTextComponent,
      ChecklistComponent,
-     CalculatorComponent
+     CalculatorComponent,
+     WeightConverterComponent
   	],
   	imports: [
     	BrowserModule,
