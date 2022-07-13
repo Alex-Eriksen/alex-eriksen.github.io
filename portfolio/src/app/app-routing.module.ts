@@ -7,11 +7,13 @@ import { BoardComponent } from './components/todo/board/board.component';
 const routes: Routes = [
 	{ path: '', component: HomepageComponent },
 	{ path: 'projects', component: OverviewComponent },
-	{ path: 'kanban-board', component: BoardComponent }
+	{ path: 'kanban-board', component: BoardComponent },
+
+	{path: "**", redirectTo: ""}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
