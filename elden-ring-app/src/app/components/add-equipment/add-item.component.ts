@@ -9,25 +9,25 @@ import { environment } from 'src/environments/environment';
 
 interface SubCategory
 {
-  name: string;
+  	name: string;
 }
 
 interface Category
 {
-  name: string;
-  subcategory: SubCategory[];
+	name: string;
+	subcategory: SubCategory[];
 }
 
 interface StatField
 {
-  stat: string;
-  amount: number;
+	stat: string;
+	amount: number;
 }
 
 export interface ScaleField
 {
-  stat: string;
-  rank: string;
+	stat: string;
+	rank: string;
 }
 
 @Component({
@@ -37,155 +37,156 @@ export interface ScaleField
 })
 export class AddItemComponent implements OnInit
 {
-  constructor(private firestore: Firestore, private router: Router) {}
+  	constructor(private firestore: Firestore, private router: Router) {}
 
-  controlled!: boolean | null;
-  isInvalid!: boolean | null;
+  	controlled!: boolean | null;
+  	isInvalid!: boolean | null;
 
-  public static OnItemAdded: Subject<string> = new Subject<string>();
+  	public static OnItemAdded: Subject<string> = new Subject<string>();
 
-  ngOnInit(): void
-  {
-    if (environment.emulator)
-    {
-      connectFirestoreEmulator(this.firestore, "localhost", 8081);
-      console.log("Connected to Emulator.");
-    }
+  	ngOnInit(): void
+  	{
+    	if (environment.emulator)
+    	{
+    	  	connectFirestoreEmulator(this.firestore, "localhost", 8081);
+    	  	console.log("Connected to Emulator.");
+    	}
 
-    this.equipmentControl = new FormControl();
-  }
+    	this.equipmentControl = new FormControl();
+  	}
 
-  equipmentControl!: FormControl;
-  equipmentGroups: Category[] = [
-    {
-      name: "Armor",
-      subcategory: [
-        { name: "Helmet" },
-        { name: "Chest" },
-        { name: "Arms" },
-        { name: "Legs" }
-      ]
-    },
-    {
-      name: "Weapon",
-      subcategory: [
-        { name: "Dagger" },
-        { name: "Sword" },
-        { name: "Whip" },
-        { name: "Katana" },
-        { name: "Bow" },
-        { name: "Crossbow" },
-      ]
-    }
-  ]
+  	equipmentControl!: FormControl;
+  	equipmentGroups: Category[] = [
+    	{
+    	  	name: "Armor",
+    	  	subcategory: [
+    	    	{ name: "Helmet" },
+    	    	{ name: "Chest" },
+    	    	{ name: "Arms" },
+    	    	{ name: "Legs" }
+    	  	]
+    	},
+    	{
+    	  	name: "Weapon",
+    	  	subcategory: [
+    	    	{ name: "Dagger" },
+    	    	{ name: "Sword" },
+    	    	{ name: "Whip" },
+    	    	{ name: "Katana" },
+    	    	{ name: "Bow" },
+    	    	{ name: "Crossbow" },
+    	  	]
+    	}
+  	]
 
-  selected: string = "";
-  statFields: Array<StatField> = [];
-  scaleFields: Array<ScaleField> = [];
-  submitted: boolean = false;
+  	selected: string = "";
+  	statFields: Array<StatField> = [];
+  	scaleFields: Array<ScaleField> = [];
+  	submitted: boolean = false;
 
-  public onValidate(form: NgForm): void
-  {
-    this.controlled = form.valid;
-    this.isInvalid = !form.valid;
-  }
+  	public onValidate(form: NgForm): void
+  	{
+  	  	this.controlled = form.valid;
+  	  	this.isInvalid = !form.valid;
+  	}
 
-  public async onSubmit(form: NgForm): Promise<void>
-  {
-    return await new Promise( async(resolve) =>
-    {
-      Object.keys(form.controls).forEach(key =>
-      {
-        if (form.controls[ key ].value instanceof Object)
-        {
-          Object.keys(form.controls[ key ].value).forEach(nestedKeys =>
-          {
-            if (form.controls[ key ].value[nestedKeys] === '')
-            {
-              form.controls[ key ].value[nestedKeys] = "0";
-            }
-          });
-        }
-        if (form.controls[ key ].value === '')
-        {
-          form.controls[ key ].setValue("0");
-        }
-      });
-      form.control.addControl('equipmentType', this.equipmentControl);
-      await setDoc(
-        doc(
-          this.firestore,
-          "Equipment",
-          this.selected,
-          form.control.get('equipmentType')!.value,
-          form.control.get('equipmentName')!.value
-        ),
-        form.value
-      )
-      .then(() =>
-      {
-        this.ItemAdded(form.control.get('equipmentName')!.value);
-        resolve();
-      });
-    });
-  }
+	public async onSubmit(form: NgForm): Promise<void>
+	{
+		return await new Promise( async(resolve) =>
+		{
+			Object.keys(form.controls).forEach(key =>
+			{
+				if (form.controls[ key ].value instanceof Object)
+				{
+				Object.keys(form.controls[ key ].value).forEach(nestedKeys =>
+				{
+					if (form.controls[ key ].value[nestedKeys] === '')
+					{
+						form.controls[ key ].value[nestedKeys] = "0";
+					}
+				});
+				}
+				if (form.controls[ key ].value === '')
+				{
+					form.controls[ key ].setValue("0");
+				}
+			});
 
-  private ItemAdded(equipmentName: string): void
-  {
-    AddItemComponent.OnItemAdded.next(equipmentName);
-    this.router.navigate(['/']);
-  }
+			form.control.addControl('equipmentType', this.equipmentControl);
+			await setDoc(
+				doc(
+					this.firestore,
+					"Equipment",
+					this.selected,
+					form.control.get('equipmentType')!.value,
+					form.control.get('equipmentName')!.value
+				),
+				form.value
+			)
+			.then(() =>
+			{
+				this.ItemAdded(form.control.get('equipmentName')!.value);
+				resolve();
+			});
+		});
+  	}
 
-  public addStatField(): void
-  {
-    this.statFields.push({stat: "empty_stat_" + this.statFields.length, amount: 0});
-  }
+	private ItemAdded(equipmentName: string): void
+	{
+		AddItemComponent.OnItemAdded.next(equipmentName);
+		this.router.navigate(['/']);
+	}
 
-  public removeStatField(): void
-  {
-    this.statFields.pop();
-  }
+	public addStatField(): void
+	{
+		this.statFields.push({stat: "empty_stat_" + this.statFields.length, amount: 0});
+	}
 
-  public updateStatField(statField: StatField, newStat: string): void
-  {
-    this.statFields.find((e) => e.stat == statField.stat)!.stat = newStat;
-  }
+	public removeStatField(): void
+	{
+		this.statFields.pop();
+	}
 
-  public addScaleField(): void
-  {
-    this.scaleFields.push({stat: "empty_stat_" + this.scaleFields.length, rank: "empty_rank"});
-  }
+	public updateStatField(statField: StatField, newStat: string): void
+	{
+		this.statFields.find((e) => e.stat == statField.stat)!.stat = newStat;
+	}
 
-  public removeScaleField(): void
-  {
-    this.scaleFields.pop();
-  }
+	public addScaleField(): void
+	{
+		this.scaleFields.push({stat: "empty_stat_" + this.scaleFields.length, rank: "empty_rank"});
+	}
 
-  public updateScaleField(scaleField: ScaleField, newScaleField: ScaleField): void
-  {
-    const local_scale_field = this.scaleFields.find((e) => e.stat == scaleField.stat);
+	public removeScaleField(): void
+	{
+		this.scaleFields.pop();
+	}
 
-    if (newScaleField.rank && newScaleField.stat)
-    {
-      local_scale_field!.stat = newScaleField.stat;
-      local_scale_field!.rank = newScaleField.rank;
-    }
+	public updateScaleField(scaleField: ScaleField, newScaleField: ScaleField): void
+	{
+		const local_scale_field = this.scaleFields.find((e) => e.stat == scaleField.stat);
 
-    if(local_scale_field?.stat != scaleField.stat)
-    {
-      local_scale_field!.stat = newScaleField.stat;
-    }
-    if (newScaleField.rank)
-    {
-      local_scale_field!.rank = newScaleField.rank;
-    }
-  }
+		if (newScaleField.rank && newScaleField.stat)
+		{
+			local_scale_field!.stat = newScaleField.stat;
+			local_scale_field!.rank = newScaleField.rank;
+		}
 
-  public optionSelected(event: MatOptionSelectionChange): any
-  {
-    if (event.isUserInput)
-    {
-      this.selected = event.source.group.label;
-    }
-  }
+		if(local_scale_field?.stat != scaleField.stat)
+		{
+			local_scale_field!.stat = newScaleField.stat;
+		}
+		if (newScaleField.rank)
+		{
+			local_scale_field!.rank = newScaleField.rank;
+		}
+	}
+
+	public optionSelected(event: MatOptionSelectionChange): any
+	{
+		if (event.isUserInput)
+		{
+			this.selected = event.source.group.label;
+		}
+	}
 }
