@@ -46,12 +46,6 @@ export class AddItemComponent implements OnInit
 
   	ngOnInit(): void
   	{
-    	if (environment.emulator)
-    	{
-    	  	connectFirestoreEmulator(this.firestore, "localhost", 8081);
-    	  	console.log("Connected to Emulator.");
-    	}
-
     	this.equipmentControl = new FormControl();
   	}
 

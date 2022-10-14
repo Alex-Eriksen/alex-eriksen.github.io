@@ -1,32 +1,32 @@
 export interface ArmorEquipment
 {
-  name: string;
-  type: string;
-  weight: number;
-  set?: string;
-  damageNegation: DamageNegation;
-  resistance: Resistance;
+	equipmentName: string;
+	equipmentType: string;
+  	weight: number;
+  	set: string;
+  	damageNegation: DamageNegation;
+  	resistance: Resistance;
 }
 
 export interface DamageNegation
 {
-  Lightning?: number;
-  Physical?: number;
-  Strike?: number;
-  Magic?: number;
-  Slash?: number;
-  Holy?: number;
-  Fire?: number;
-  Pierce?: number;
+  	lightning: number;
+  	physical: number;
+  	strike: number;
+  	magic: number;
+  	slash: number;
+  	holy: number;
+  	fire: number;
+  	pierce: number;
 }
 
 export interface Resistance
 {
-  Robustness?: number;
-  Focus?: number;
-  Vitality?: number;
-  Poise?: number;
-  Immunity?: number;
+  robustness: number;
+  focus: number;
+  vitality: number;
+  poise: number;
+  immunity: number;
 }
 
 export interface WeaponEquipment

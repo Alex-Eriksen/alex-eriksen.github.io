@@ -3,20 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  emulator: true,
-  firebaseConfig: {
-    host: 'localhost:4200',
-    ssl: false,
-    apiKey: "AIzaSyC7m2XOQQ7r1vFrgAfq7tLHq8ZBANs8ER0",
-    authDomain: "elden-ring-gear-project.firebaseapp.com",
-    databaseURL: "localhost:8081?ns=elden-ring-gear-project",
-    projectId: "elden-ring-gear-project",
-    storageBucket: "elden-ring-gear-project.appspot.com",
-    messagingSenderId: "121972688077",
-    appId: "1:121972688077:web:3aae19a1003945abb01584",
-    measurementId: "G-JS611PDDYM"
-  }
+  	production: false,
+  	emulator: true,
+  	firebaseConfig: {
+  	  	host: 'localhost:4200',
+  	  	ssl: false,
+  	  	apiKey: "AIzaSyC7m2XOQQ7r1vFrgAfq7tLHq8ZBANs8ER0",
+  	  	authDomain: "elden-ring-gear-project.firebaseapp.com",
+  	  	databaseURL: "localhost:8081?ns=elden-ring-gear-project",
+  	  	projectId: "elden-ring-gear-project",
+  	  	storageBucket: "elden-ring-gear-project.appspot.com",
+  	  	messagingSenderId: "121972688077",
+  	  	appId: "1:121972688077:web:3aae19a1003945abb01584",
+  	  	measurementId: "G-JS611PDDYM"
+  	}
 };
 
 /*

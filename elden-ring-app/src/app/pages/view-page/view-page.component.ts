@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DocumentData } from '@angular/fire/compat/firestore';
-import { collection, Firestore, setDoc, connectFirestoreEmulator, doc, getDoc } from '@angular/fire/firestore';
+import { collection, Firestore, setDoc, connectFirestoreEmulator, doc, getDoc, CollectionReference, DocumentData, collectionData, getDocs, query, where, collectionGroup } from '@angular/fire/firestore';
+import { map } from 'rxjs';
+import { ArmorEquipment } from 'src/app/interfaces/equipment';
+import { SearchResult } from 'src/app/interfaces/searchResult';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,61 +10,38 @@ import { environment } from 'src/environments/environment';
   templateUrl: './view-page.component.html',
   styleUrls: ['./view-page.component.css']
 })
-export class ViewPageComponent implements OnInit {
+export class ViewPageComponent implements OnInit
+{
+	constructor(private firestore: Firestore) { }
 
-  constructor(private firestore: Firestore) { }
+	public equipment: ArmorEquipment[] = [];
 
-  public equipment: DocumentData[] = [];
+	ngOnInit(): void { }
 
-  ngOnInit(): void
-  {
-    if (environment.emulator)
-    {
-      connectFirestoreEmulator(this.firestore, "localhost", 8081);
-      this.setEquipment();
-      console.warn("Connected to emulator.");
-    }
-  }
+	public async getEquipment(equipmentName: string): Promise<void>
+	{
+		console.log("ViewPageComponent::getEquipment()");
+		const q = collectionGroup(this.firestore, 'Sword');
+		const s = await getDocs(q);
+		s.forEach((doc) =>
+		{
+			console.log(doc.id, " => ", doc.data());
+		})
+		// const docRef = doc(this.firestore, "Equipment", "Armor", "Chest", equipmentName);
+		// const docSnap = await getDoc(docRef);
+		// if (docSnap.exists())
+		// {
+		//   	this.equipment.push(docSnap.data() as ArmorEquipment);
+		// }
+		// else
+		// {
+		//		console.warn("No such document.");
+		// }
+  	}
 
-  public async getEquipment(equipmentName: string): Promise<void>
-  {
-    const docRef = doc(this.firestore, "cities", equipmentName);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists())
-    {
-      console.log("Document Data: ", docSnap.data());
-      this.equipment[0] = docSnap.data();
-    }
-    else
-    {
-      console.log("No such document.");
-    }
-  }
+	private async setEquipment(): Promise<void>
+	{
 
-  private async setEquipment(): Promise<void>
-  {
-    const citiesRef = collection(this.firestore, "cities");
-
-    await setDoc(doc(citiesRef, "SF"), {
-      name: "San Francisco", state: "CA", country: "USA",
-      capital: false, population: 860000,
-      regions: ["west_coast", "norcal"] });
-    await setDoc(doc(citiesRef, "LA"), {
-        name: "Los Angeles", state: "CA", country: "USA",
-        capital: false, population: 3900000,
-        regions: ["west_coast", "socal"] });
-    await setDoc(doc(citiesRef, "DC"), {
-        name: "Washington, D.C.", state: null, country: "USA",
-        capital: true, population: 680000,
-        regions: ["east_coast"] });
-    await setDoc(doc(citiesRef, "TOK"), {
-        name: "Tokyo", state: null, country: "Japan",
-        capital: true, population: 9000000,
-        regions: ["kanto", "honshu"] });
-    await setDoc(doc(citiesRef, "BJ"), {
-        name: "Beijing", state: null, country: "China",
-        capital: true, population: 21500000,
-        regions: ["jingjinji", "hebei"] });
-  }
+	}
 
 }

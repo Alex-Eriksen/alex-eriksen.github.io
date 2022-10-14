@@ -22,35 +22,35 @@ import { HeaderComponent } from './components/header/header.component';
 import { ViewPageComponent } from './pages/view-page/view-page.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DatabaseLoadComponent,
-    AddItemComponent,
-    StatFieldComponent,
-    ValueComponent,
-    ScaleFieldComponent,
-    MainPageComponent,
-    HeaderComponent,
-    ViewPageComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideFirestore(() => getFirestore()),
-    BrowserAnimationsModule,
-    AngularMaterialModuleModule
-  ],
-  providers: [
-    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearence: 'fill' } },
-    // { provide: USE_FIRESTORE_EMULATOR, useValue: environment.emulator ? ['localhost', 8081] : undefined } "Only for 6.1.0 of @angular/fire I.E. Not the modular SDK as that is 7.*"
-  ],
-  bootstrap: [AppComponent]
+  	declarations: [
+  	  AppComponent,
+  	  DatabaseLoadComponent,
+  	  AddItemComponent,
+  	  StatFieldComponent,
+  	  ValueComponent,
+  	  ScaleFieldComponent,
+  	  MainPageComponent,
+  	  HeaderComponent,
+  	  ViewPageComponent
+  	],
+  	imports: [
+  	  	BrowserModule,
+  	  	AppRoutingModule,
+  	  	FormsModule,
+  	  	ReactiveFormsModule,
+  	  	provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+		provideFirestore(() => getFirestore()),
+  	 	BrowserAnimationsModule,
+  	 	AngularMaterialModuleModule
+  	],
+  	providers: [
+  	  	{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearence: 'fill' } },
+  	  	// { provide: USE_FIRESTORE_EMULATOR, useValue: environment.emulator ? ['localhost', 8081] : undefined } "Only for 6.1.0 of @angular/fire I.E. Not the modular SDK as that is 7.*"
+  	],
+  	bootstrap: [AppComponent]
 })
 export class AppModule
 {
-  constructor() {}
+  	constructor() {}
 }
 

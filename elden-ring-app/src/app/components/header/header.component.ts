@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Firestore } from '@angular/fire/firestore';
+import { connectFirestoreEmulator } from 'firebase/firestore';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit
 {
-  	constructor() { }
+  	constructor(private firestore: Firestore) { }
 
   	public loggedIn: boolean = false;
 
-  	ngOnInit(): void {}
+	ngOnInit(): void
+	{
+		if (environment.emulator)
+    	{
+    	  	connectFirestoreEmulator(this.firestore, "localhost", 8081);
+    	  	console.log("Connected to Emulator.");
+    	}
+	}
 }
