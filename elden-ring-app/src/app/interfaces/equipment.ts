@@ -10,7 +10,6 @@ export interface ArmorEquipment
 
 export interface DamageNegation
 {
-  	lightning: number;
   	physical: number;
   	strike: number;
   	magic: number;
@@ -31,34 +30,34 @@ export interface Resistance
 
 export interface WeaponEquipment
 {
-  name: string
-  type: string
-  weight: number
-  set?: string
-  attack: Attack
-  guard: Guard
-  scaling: Scaling[]
-  requires: Require[]
+  name: string;
+  type: string;
+  weight: number;
+  set: string;
+  attack: Attack;
+  guard: Guard;
+  scaling: Scaling[];
+  requires: Require[];
 }
 
 export interface Attack
 {
-  phyiscal?: number
-  maigc?: number
-  fire?: number
-  lightning?: number
-  holy?: number
-  critical?: number
+  phyiscal: number;
+  maigc: number;
+  fire: number;
+  lightning: number;
+  holy: number;
+  critical: number;
 }
 
 export interface Guard
 {
-  phyiscal?: number
-  maigc?: number
-  fire?: number
-  lightning?: number
-  holy?: number
-  boost?: number
+  phyiscal: number;
+  maigc: number;
+  fire: number;
+  lightning: number;
+  holy: number;
+  boost: number;
 }
 
 export interface Scaling

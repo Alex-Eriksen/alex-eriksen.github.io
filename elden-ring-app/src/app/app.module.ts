@@ -20,6 +20,7 @@ import { USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/compat/fir
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ViewPageComponent } from './pages/view-page/view-page.component';
+import { BuildCalculatorComponent } from './pages/build-calculator/build-calculator.component';
 
 @NgModule({
   	declarations: [
@@ -31,7 +32,8 @@ import { ViewPageComponent } from './pages/view-page/view-page.component';
   	  ScaleFieldComponent,
   	  MainPageComponent,
   	  HeaderComponent,
-  	  ViewPageComponent
+  	  ViewPageComponent,
+     BuildCalculatorComponent
   	],
   	imports: [
   	  	BrowserModule,
