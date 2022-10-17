@@ -18,14 +18,8 @@ export class BuildCalculatorComponent implements OnInit
 
 	ngOnInit(): void { }
 
-	public print()
-	{
-		console.log(this.comparisonCharacter);
-	}
-
 	public async getAllOfType(type: string): Promise<void>
 	{
-		console.log("Ran");
 		this.helmets = [];
 		const typeCollection = collectionGroup(this.firestore, type);
 		const docs = await getDocs(typeCollection);
