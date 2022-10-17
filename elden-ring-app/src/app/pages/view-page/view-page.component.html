@@ -2,14 +2,14 @@
   <input #equipmentName type="search" class="form-control" placeholder="Equipment Name..." aria-label="Search">
   <button class="btn btn-primary" type="button" id="equipmentNameSearch" (click)="this.getEquipment(equipmentName.value)">Search</button>
 </form>
-<div class="d-flex flex-column p-3">
+<div class="d-flex gap-3 p-3">
   	<div *ngFor="let equipment of this.equipment" class="card text-dark">
 	  	<div class="card-header">
 			<h5 class="card-title">{{equipment.equipmentName}}</h5>
 	  	</div>
 		<div class="card-body">
 			<p class="card-text"><strong>Set:</strong> {{equipment.set}}</p>
-			<p class="card-text">Type: {{equipment.equipmentType}}</p>
+			<p class="card-text"><strong>Type:</strong> {{equipment.equipmentType}}</p>
 		</div>
   	</div>
 </div>

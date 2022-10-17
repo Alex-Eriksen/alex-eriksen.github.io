@@ -3,7 +3,7 @@ import { Firestore } from '@angular/fire/firestore';
 import { FormBuilder, FormControl, FormGroup, NgForm, NgModel, Validators } from '@angular/forms';
 import { MatOptionSelectionChange } from '@angular/material/core';
 import { Router } from '@angular/router';
-import { connectFirestoreEmulator, doc, getDocs, setDoc } from 'firebase/firestore';
+import { connectFirestoreEmulator, doc, getDoc, getDocs, setDoc, updateDoc } from 'firebase/firestore';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 

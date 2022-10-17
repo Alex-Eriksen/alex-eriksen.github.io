@@ -14,34 +14,51 @@ export class ViewPageComponent implements OnInit
 {
 	constructor(private firestore: Firestore) { }
 
-	public equipment: ArmorEquipment[] = [];
+	public equipment: SearchResult[] = [];
 
 	ngOnInit(): void { }
 
-	public async getEquipment(equipmentName: string): Promise<void>
+	private equipmentGroups: string[] = [
+		"Helmet",
+		"Chest",
+		"Arms",
+		"Legs",
+		"Dagger",
+		"Sword",
+		"Whip",
+		"Katana",
+		"Bow",
+		"Crossbow"
+  	]
+
+	public getEquipment(searchQuery: string): void
 	{
-		console.log("ViewPageComponent::getEquipment()");
-		const q = collectionGroup(this.firestore, 'Sword');
-		const s = await getDocs(q);
-		s.forEach((doc) =>
+		this.equipment = [];
+		for (const category of this.equipmentGroups)
 		{
-			console.log(doc.id, " => ", doc.data());
-		})
-		// const docRef = doc(this.firestore, "Equipment", "Armor", "Chest", equipmentName);
-		// const docSnap = await getDoc(docRef);
-		// if (docSnap.exists())
-		// {
-		//   	this.equipment.push(docSnap.data() as ArmorEquipment);
-		// }
-		// else
-		// {
-		//		console.warn("No such document.");
-		// }
+			const currentCollection = collectionGroup(this.firestore, category);
+			collectionData(currentCollection).subscribe((data) =>
+			{
+				if (data.length == 0)
+				{
+					return;
+				}
+
+				for (const document of data)
+				{
+					const searchResult: SearchResult = document as SearchResult;
+					const searchString: string = `${searchResult.equipmentName.toLowerCase()} ${searchResult.equipmentType.toLowerCase()} ${searchResult.set.toLowerCase()}`;
+					if (searchString.indexOf(searchQuery.toLowerCase()) !== -1)
+					{
+						this.equipment.push(searchResult);
+					}
+				}
+			});
+		}
   	}
 
 	private async setEquipment(): Promise<void>
 	{
 
 	}
-
 }
